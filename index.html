@@ -1,0 +1,1439 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="theme-color"
+        content="#f7f0e4"
+    >
+
+    <title>Abisha & Rohit — Our Wedding</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&family=Great+Vibes&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Main CSS -->
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+    <!-- =====================================================
+         OPENING VIDEO BASIC CSS
+         This prevents the video from being stretched/cropped.
+    ====================================================== -->
+
+    <style>
+
+        /* Opening video layer */
+        .intro-screen {
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #f7f0e4;
+
+            overflow: hidden;
+        }
+
+
+        /*
+         * IMPORTANT:
+         * Keep the video's natural aspect ratio.
+         * Do NOT use width:100%;
+         * Do NOT use height:100%;
+         * Do NOT use object-fit:cover.
+         */
+        .intro-video {
+            display: block;
+
+            width: auto;
+            height: auto;
+
+            max-width: 92vw;
+            max-height: 88vh;
+
+            object-fit: contain;
+
+            flex-shrink: 0;
+
+            position: relative;
+            z-index: 1;
+
+            background: transparent;
+        }
+
+
+        /* Soft overlay */
+        .intro-overlay {
+            position: absolute;
+            inset: 0;
+
+            z-index: 2;
+
+            pointer-events: none;
+
+            background:
+                linear-gradient(
+                    to bottom,
+                    rgba(40, 25, 15, 0.03),
+                    rgba(40, 25, 15, 0.10)
+                );
+        }
+
+
+        /* Opening button */
+        .enter-wedding {
+            position: absolute;
+
+            left: 50%;
+            bottom: 7%;
+
+            transform: translateX(-50%);
+
+            z-index: 10;
+
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+
+            padding: 15px 25px;
+
+            border: 1px solid rgba(150, 95, 30, 0.65);
+            border-radius: 999px;
+
+            background: rgba(255, 250, 242, 0.94);
+
+            color: #5b3827;
+
+            font-family: "DM Sans", sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+
+            letter-spacing: 0.18em;
+
+            cursor: pointer;
+
+            transition:
+                transform 0.3s ease,
+                background 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+
+        .enter-wedding:hover {
+            transform: translateX(-50%) translateY(-3px);
+
+            background: #fffaf2;
+
+            box-shadow:
+                0 12px 35px rgba(80, 50, 25, 0.16);
+        }
+
+
+        .enter-arrow {
+            font-size: 18px;
+            line-height: 1;
+        }
+
+
+        /* Fade away after video finishes */
+        .intro-screen.is-finished {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+
+            transition:
+                opacity 1.2s ease,
+                visibility 1.2s ease;
+        }
+
+
+        /* While video is playing, hide opening button */
+        .intro-screen.is-playing .enter-wedding {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+
+        /*
+         * Mobile:
+         * Still preserve the video's aspect ratio.
+         */
+        @media (max-width: 700px) {
+
+            .intro-video {
+                max-width: 94vw;
+                max-height: 82vh;
+            }
+
+            .enter-wedding {
+                bottom: 5%;
+                padding: 13px 20px;
+                font-size: 10px;
+            }
+        }
+
+    </style>
+<audio
+    id="weddingMusic"
+    preload="auto"
+    loop
+    src="assets/wedding-music.mp3">
+</audio>
+</head>
+
+
+<body>
+
+    <!-- =====================================================
+         WEDDING INTRO VIDEO
+         
+         ONLY ONE VIDEO.
+         ONLY ONE introVideo ID.
+    ====================================================== -->
+
+    <div
+        id="introScreen"
+        class="intro-screen"
+    >
+
+        <video
+            id="introVideo"
+            class="intro-video"
+            playsinline
+            webkit-playsinline
+            preload="auto"
+            aria-label="Abisha and Rohit wedding introduction"
+        >
+
+            <source
+                src="assets/openvideo.mp4"
+                type="video/mp4"
+            >
+
+            Your browser does not support HTML5 video.
+
+        </video>
+
+
+        <!-- Soft overlay -->
+        <div
+            class="intro-overlay"
+            aria-hidden="true"
+        ></div>
+
+
+        <!-- User gesture required for audio playback -->
+        <button
+            id="enterWedding"
+            class="enter-wedding"
+            type="button"
+        >
+
+            <span>OPEN INVITATION</span>
+
+            <span
+                class="enter-arrow"
+                aria-hidden="true"
+            >
+                →
+            </span>
+
+        </button>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <header
+        class="site-header"
+        id="top"
+    >
+
+        <a
+            class="brand"
+            href="#home"
+            aria-label="Abisha and Rohit home"
+        >
+
+            <span class="brand-logo-wrap">
+
+                <img
+                    src="assets/hero-wedding.png"
+                    alt="Abisha and Rohit wedding rings logo"
+                    class="brand-logo"
+                >
+
+            </span>
+
+            <span class="brand-name">
+                ABISHA &amp; ROHIT
+            </span>
+
+        </a>
+
+
+        <!-- Mobile navigation -->
+        <button
+            class="nav-toggle"
+            type="button"
+            aria-label="Open menu"
+            aria-expanded="false"
+        >
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </button>
+
+
+        <!-- Navigation -->
+        <nav
+            class="nav"
+            aria-label="Main navigation"
+        >
+
+            <a href="#couple">
+                THE COUPLE
+            </a>
+
+            <a href="#moments">
+                OUR MOMENTS
+            </a>
+
+            <a href="#countdown">
+                COUNTDOWN
+            </a>
+
+            <a href="#celebrations">
+                CELEBRATIONS
+            </a>
+
+            <a href="#invitation">
+                INVITATION
+            </a>
+
+            <a href="#find-way">
+                FIND MY WAY
+            </a>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         MAIN WEBSITE
+    ====================================================== -->
+
+    <main>
+
+
+        <!-- =================================================
+             HERO
+        ================================================== -->
+
+        <section
+            class="hero section"
+            id="home"
+        >
+
+            <img
+                class="hero-logo"
+                src="assets/hero-wedding.png"
+                alt="Abisha and Rohit wedding rings logo"
+            >
+
+
+            <div class="ornament">
+
+                <span></span>
+
+                <b>✦</b>
+
+                <span></span>
+
+            </div>
+
+
+            <p class="eyebrow">
+                TOGETHER WITH THEIR FAMILIES
+            </p>
+
+
+            <h1>
+                Two hearts.
+                <em>One promise.</em>
+            </h1>
+
+
+            <p class="hero-copy">
+                A lifetime together begins with a beautiful day.
+            </p>
+
+
+            <a
+                class="gold-button"
+                href="#invitation"
+            >
+                EXPLORE OUR INVITATION
+            </a>
+
+        </section>
+
+
+
+        <!-- =================================================
+             COUPLE
+        ================================================== -->
+
+        <section
+            class="couple section"
+            id="couple"
+        >
+
+            <div class="section-heading">
+
+                <p class="eyebrow">
+                    THE COUPLE
+                </p>
+
+                <h2>
+                    Meet the Couple
+                </h2>
+
+            </div>
+
+
+            <div class="couple-grid">
+
+                <div class="couple-photo-frame">
+
+                    <img
+                        src="assets/couple.png"
+                        alt="Abisha and Rohit"
+                    >
+
+                </div>
+
+
+                <div class="couple-copy">
+
+                    <p class="script">
+                        Forever starts here
+                    </p>
+
+
+                    <h3>
+                        ABISHA
+                        <span>&amp;</span>
+                        ROHIT
+                    </h3>
+
+
+                    <p>
+                        Two people, one beautiful journey,
+                        and a promise to choose each other
+                        every day.
+                    </p>
+
+
+                    <div class="mini-divider">
+                        ✦
+                    </div>
+
+
+                    <p class="small">
+                        With love, laughter and the blessings
+                        of our families, we invite you to
+                        celebrate with us.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             MOMENTS
+        ================================================== -->
+
+        <section
+            class="section moments"
+            id="moments"
+        >
+
+            <div class="section-heading">
+
+                <div class="ornament">
+
+                    <span></span>
+
+                    <b>✦</b>
+
+                    <span></span>
+
+                </div>
+
+
+                <p class="eyebrow">
+                    OUR MOMENTS
+                </p>
+
+
+                <h2>
+                    Little moments.
+                    <br>
+                    <em>Forever memories.</em>
+                </h2>
+
+
+                <p class="moments-intro">
+                    A collection of moments that made
+                    our journey special.
+                </p>
+
+            </div>
+
+
+            <div class="moments-gallery">
+
+
+                <!-- PHOTO 1 -->
+
+                <figure class="moment-photo moment-photo-large">
+
+                    <img
+                        src="assets/m2.jpeg"
+                        alt="Abisha and Rohit"
+                        loading="lazy"
+                    >
+
+                    <figcaption>
+
+                        <span>01</span>
+
+                        Our beginning
+
+                    </figcaption>
+
+                </figure>
+
+
+                <!-- PHOTO 2 -->
+
+                <figure class="moment-photo">
+
+                    <img
+                        src="assets/m1.jpeg"
+                        alt="Abisha and Rohit"
+                        loading="lazy"
+                    >
+
+                    <figcaption>
+
+                        <span>02</span>
+
+                        Beautiful memories
+
+                    </figcaption>
+
+                </figure>
+
+
+                <!-- PHOTO 3 -->
+
+                <figure class="moment-photo">
+
+                    <img
+                        src="assets/m3.jpeg"
+                        alt="Abisha and Rohit"
+                        loading="lazy"
+                    >
+
+                    <figcaption>
+
+                        <span>03</span>
+
+                        Together
+
+                    </figcaption>
+
+                </figure>
+
+
+                <!-- PHOTO 4 -->
+
+                <figure class="moment-photo">
+
+                    <img
+                        src="assets/m4.jpeg"
+                        alt="Abisha and Rohit"
+                        loading="lazy"
+                    >
+
+                    <figcaption>
+
+                        <span>04</span>
+
+                        Moments
+
+                    </figcaption>
+
+                </figure>
+
+
+                <!-- PHOTO 5 -->
+
+                <figure class="moment-photo">
+
+                    <img
+                        src="assets/m5.jpeg"
+                        alt="Abisha and Rohit"
+                        loading="lazy"
+                    >
+
+                    <figcaption>
+
+                        <span>05</span>
+
+                        Forever
+
+                    </figcaption>
+
+                </figure>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             COUNTDOWN
+        ================================================== -->
+
+        <section
+            class="countdown section"
+            id="countdown"
+        >
+
+            <div class="section-heading">
+
+                <div class="ornament">
+
+                    <span></span>
+
+                    <b>✦</b>
+
+                    <span></span>
+
+                </div>
+
+
+                <p class="eyebrow">
+                    THE BIG DAY
+                </p>
+
+
+                <h2>
+                    COUNTING DOWN TO FOREVER
+                </h2>
+
+
+                <p class="date-line">
+                    Monday, October 05, 2026 · 09:30 AM
+                </p>
+
+            </div>
+
+
+            <div
+                class="countdown-grid"
+                aria-live="polite"
+            >
+
+                <div class="time-card">
+
+                    <strong id="days">
+                        00
+                    </strong>
+
+                    <span>
+                        DAYS
+                    </span>
+
+                </div>
+
+
+                <div class="time-card">
+
+                    <strong id="hours">
+                        00
+                    </strong>
+
+                    <span>
+                        HOURS
+                    </span>
+
+                </div>
+
+
+                <div class="time-card">
+
+                    <strong id="minutes">
+                        00
+                    </strong>
+
+                    <span>
+                        MINUTES
+                    </span>
+
+                </div>
+
+
+                <div class="time-card">
+
+                    <strong id="seconds">
+                        00
+                    </strong>
+
+                    <span>
+                        SECONDS
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             CELEBRATIONS
+        ================================================== -->
+
+        <section
+            class="section celebrations"
+            id="celebrations"
+        >
+
+            <div class="section-heading">
+
+                <p class="eyebrow">
+                    SAVE THE DATES
+                </p>
+
+
+                <h2>
+                    Celebrations
+                </h2>
+
+
+                <div class="ornament">
+
+                    <span></span>
+
+                    <b>✦</b>
+
+                    <span></span>
+
+                </div>
+
+
+                <p class="celebration-intro">
+                    Two beautiful occasions.
+                    One unforgettable beginning.
+                </p>
+
+            </div>
+
+
+            <div class="celebration-timeline">
+
+
+                <!-- =========================================
+                     RECEPTION
+                ========================================== -->
+
+                <article class="celebration-card reception-card">
+
+                    <div class="event-top">
+
+                        <span class="event-symbol">
+                            ♡
+                        </span>
+
+                        <span class="event-label">
+                            RECEPTION
+                        </span>
+
+                    </div>
+
+
+                    <div class="event-date">
+
+                        <span class="day">
+                            04
+                        </span>
+
+                        <div>
+
+                            <span class="month">
+                                OCTOBER
+                            </span>
+
+                            <span class="weekday">
+                                SUNDAY
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="event-time">
+
+                        <span>
+                            04:00 PM
+                        </span>
+
+                        <small>
+                            ONWARDS
+                        </small>
+
+                    </div>
+
+
+                    <div class="event-divider">
+                        <span>✦</span>
+                    </div>
+
+
+                    <div class="event-location">
+
+                        <h3>
+                            Sacred Heart Community Hall
+                        </h3>
+
+                        <p>
+                            Gnaranvilai, Pacode
+                        </p>
+
+                    </div>
+
+
+                    <div class="event-actions">
+
+                        <a
+                            href="https://www.google.com/maps/search/?api=1&query=Sacred+Heart+Community+Hall+Gnaravila+Pacode"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="direction-btn"
+                        >
+
+                            <span>↗</span>
+
+                            GET DIRECTIONS
+
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- =========================================
+                     WEDDING
+                ========================================== -->
+
+                <article class="celebration-card wedding-card">
+
+                    <div class="featured-ribbon">
+                        THE BIG DAY
+                    </div>
+
+
+                    <div class="event-top">
+
+                        <span class="event-symbol">
+                            ✦
+                        </span>
+
+                        <span class="event-label">
+                            WEDDING
+                        </span>
+
+                    </div>
+
+
+                    <div class="event-date">
+
+                        <span class="day">
+                            05
+                        </span>
+
+                        <div>
+
+                            <span class="month">
+                                OCTOBER
+                            </span>
+
+                            <span class="weekday">
+                                MONDAY
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="event-time">
+
+                        <span>
+                            09:30 AM
+                        </span>
+
+                        <small>
+                            — 10:30 AM
+                        </small>
+
+                    </div>
+
+
+                    <div class="event-divider">
+                        <span>✦</span>
+                    </div>
+
+
+                    <div class="event-location">
+
+                        <h3>
+                            Christ the King Cathedral Church
+                        </h3>
+
+                        <p>
+                            Marthandam
+                        </p>
+
+                    </div>
+
+
+                    <div class="event-actions">
+
+                        <a
+                            href="https://www.google.com/maps/search/?api=1&query=Christ+the+King+Cathedral+Church+Marthandam"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="direction-btn"
+                        >
+
+                            <span>↗</span>
+
+                            GET DIRECTIONS
+
+                        </a>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+
+            <div class="celebration-note">
+
+                <span>
+                    With love,
+                </span>
+
+                <strong>
+                    Abisha & Rohit
+                </strong>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             INVITATION
+        ================================================== -->
+
+        <section
+            class="invitation section"
+            id="invitation"
+        >
+
+            <div class="section-heading">
+
+                <div class="ornament">
+
+                    <span></span>
+
+                    <b>✦</b>
+
+                    <span></span>
+
+                </div>
+
+
+                <p class="eyebrow">
+                    THE INVITATION
+                </p>
+
+
+                <h2>
+                    Join Us On Our Special Day
+                </h2>
+
+            </div>
+
+
+            <div class="invitation-display">
+
+                <div class="invitation-frame">
+
+                    <img
+                        src="assets/front.jpg"
+                        alt="Wedding invitation card"
+                    >
+
+                </div>
+
+
+                <button
+                    class="open-invitation"
+                    type="button"
+                >
+
+                    <span>
+                        ▣
+                    </span>
+
+                    OPEN INVITATION CARD
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             INVITATION MODAL
+        ================================================== -->
+
+        <div
+            class="invitation-modal"
+            aria-hidden="true"
+        >
+
+            <div class="modal-backdrop"></div>
+
+
+            <div
+                class="modal-panel"
+                role="dialog"
+                aria-modal="true"
+                aria-label="Wedding invitation"
+            >
+
+                <button
+                    class="modal-close"
+                    type="button"
+                    aria-label="Close invitation"
+                >
+                    ×
+                </button>
+
+
+                <img
+                    src="assets/invitation.png"
+                    alt="Full wedding invitation"
+                >
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             FIND MY WAY
+        ================================================== -->
+
+        <section
+            class="find-way section"
+            id="find-way"
+        >
+
+            <div class="section-heading">
+
+                <div class="ornament">
+
+                    <span></span>
+
+                    <b>✦</b>
+
+                    <span></span>
+
+                </div>
+
+
+                <p class="eyebrow">
+                    LOCATION
+                </p>
+
+
+                <h2>
+                    Find My Way
+                </h2>
+
+
+                <p class="celebration-intro">
+                    Everything you need to find us
+                    on our special days.
+                </p>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 VENUE GRID
+            ================================================== -->
+
+            <div class="venue-grid">
+
+
+                <!-- =============================================
+                     RECEPTION VENUE
+                ============================================== -->
+
+                <article class="venue-card">
+
+                    <div class="venue-top">
+
+                        <div class="venue-icon">
+                            ♢
+                        </div>
+
+                        <p class="venue-label">
+                            THE RECEPTION
+                        </p>
+
+                    </div>
+
+
+                    <div class="venue-content">
+
+                        <h3>
+                            Sacred Heart
+                            <br>
+                            Community Hall
+                        </h3>
+
+
+                        <p class="venue-location">
+                            Gnaranvilai, Pacode
+                        </p>
+
+
+                        <div class="venue-divider">
+                            ✦
+                        </div>
+
+
+                        <div class="venue-details">
+
+                            <div>
+
+                                <span>
+                                    DATE
+                                </span>
+
+                                <strong>
+                                    Sunday · October 04, 2026
+                                </strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>
+                                    TIME
+                                </span>
+
+                                <strong>
+                                    04:00 PM onwards
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- MAP PREVIEW -->
+
+                        <div class="map-preview">
+
+                            <iframe
+                                src="https://www.google.com/maps?q=Sacred%20Heart%20Community%20Hall%20Gnaravila%20Pacode&output=embed"
+                                title="Map showing Sacred Heart Community Hall"
+                                loading="lazy"
+                                allowfullscreen
+                                referrerpolicy="no-referrer-when-downgrade"
+                            ></iframe>
+
+                        </div>
+
+
+                        <!-- DIRECTIONS -->
+
+                        <a
+                            href="https://www.google.com/maps/search/?api=1&query=Sacred+Heart+Community+Hall+Gnaravila+Pacode"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="direction-button"
+                        >
+
+                            <span>
+                                ↗
+                            </span>
+
+                            GET DIRECTIONS
+
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- =============================================
+                     WEDDING VENUE
+                ============================================== -->
+
+                <article class="venue-card">
+
+                    <div class="venue-top">
+
+                        <div class="venue-icon">
+                            ♢
+                        </div>
+
+                        <p class="venue-label">
+                            THE WEDDING CEREMONY
+                        </p>
+
+                    </div>
+
+
+                    <div class="venue-content">
+
+                        <h3>
+                            Christ The King
+                            <br>
+                            Cathedral Church
+                        </h3>
+
+
+                        <p class="venue-location">
+                            Marthandam
+                        </p>
+
+
+                        <div class="venue-divider">
+                            ✦
+                        </div>
+
+
+                        <div class="venue-details">
+
+                            <div>
+
+                                <span>
+                                    DATE
+                                </span>
+
+                                <strong>
+                                    Monday · October 05, 2026
+                                </strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>
+                                    TIME
+                                </span>
+
+                                <strong>
+                                    09:30 AM – 10:30 AM
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- MAP PREVIEW -->
+
+                        <div class="map-preview">
+
+                            <iframe
+                                src="https://www.google.com/maps?q=Christ%20The%20King%20Cathedral%20Church%20Marthandam&output=embed"
+                                title="Map showing Christ the King Cathedral Church"
+                                loading="lazy"
+                                allowfullscreen
+                                referrerpolicy="no-referrer-when-downgrade"
+                            ></iframe>
+
+                        </div>
+
+
+                        <!-- DIRECTIONS -->
+
+                        <a
+                            href="https://www.google.com/maps/search/?api=1&query=Christ+The+King+Cathedral+Church+Marthandam"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="direction-button"
+                        >
+
+                            <span>
+                                ↗
+                            </span>
+
+                            GET DIRECTIONS
+
+                        </a>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         WEDDING MUSIC
+         
+         ONLY ONE AUDIO ELEMENT.
+    ====================================================== -->
+
+    <audio
+        id="weddingMusic"
+        preload="none"
+        loop
+    >
+
+        <source
+            src="assets/canthelp.mp3"
+            type="audio/mpeg"
+        >
+
+        Your browser does not support audio playback.
+
+    </audio>
+
+
+
+    <!-- =====================================================
+         MUSIC BUTTON
+    ====================================================== -->
+
+    <button
+        class="music-button"
+        id="musicButton"
+        type="button"
+        aria-label="Play wedding music"
+    >
+
+        <span class="music-icon">
+            ♫
+        </span>
+
+        <span class="music-text">
+            PLAY MUSIC
+        </span>
+
+    </button>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer>
+
+        <p>
+            WITH LOVE, ABISHA &amp; ROHIT
+        </p>
+
+
+        <a href="#top">
+            BACK TO TOP ↑
+        </a>
+
+    </footer>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>
