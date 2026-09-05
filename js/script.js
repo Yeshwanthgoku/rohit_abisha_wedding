@@ -574,14 +574,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
         try {
 
-            await introVideo.play();
-
-
             /* =================================================
-               START BACKGROUND MUSIC ON THE SAME CLICK
+               START VIDEO + MUSIC AT THE SAME TIME
+               (fired together, not one after the other,
+               so there is no delay before the music starts)
             ================================================= */
 
-            await startBackgroundMusic();
+            const introVideoPlayPromise =
+                introVideo.play();
+
+            startBackgroundMusic();
+
+            await introVideoPlayPromise;
 
 
             /*
