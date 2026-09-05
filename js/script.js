@@ -563,18 +563,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         /*
-         * Opening video should play
-         * with its ORIGINAL audio.
+         * Opening video must play
+         * muted (no video sound).
          */
 
-        introVideo.muted = false;
+        introVideo.muted = true;
 
-        introVideo.volume = 1;
+        introVideo.volume = 0;
 
 
         try {
 
             await introVideo.play();
+
+
+            /* =================================================
+               START BACKGROUND MUSIC ON THE SAME CLICK
+            ================================================= */
+
+            await startBackgroundMusic();
 
 
             /*
@@ -742,11 +749,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 document.body.style.overflow = "";
 
 
-                /* =================================================
-                   START BACKGROUND MUSIC
-                ================================================= */
-
-                await startBackgroundMusic();
+                /*
+                 * Background music was already started
+                 * on the OPEN INVITATION click, so it
+                 * simply keeps playing here.
+                 */
 
 
                 /*
