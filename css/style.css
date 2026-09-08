@@ -10,56 +10,63 @@
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
 
-  background: #fbf6ec;
-  color: #5b3826;
+    background: var(--ivory);
+    color: var(--dark-brown);
 
-  font-family: "DM Sans", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
+    font-family: "DM Sans", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
 }
 
 body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
 
-  opacity: 0.13;
+    opacity: 0.13;
 
-  background-image:
-    radial-gradient(
-      rgba(110, 73, 38, 0.28) 0.6px,
-      transparent 0.6px
-    );
+    background-image:
+        radial-gradient(rgba(90, 58, 42, 0.16) 0.6px,
+            transparent 0.6px);
 
-  background-size: 18px 18px;
+    background-size: 18px 18px;
 
-  z-index: -1;
+    z-index: -1;
 }
 
 img {
-  max-width: 100%;
+    max-width: 100%;
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+    color: inherit;
+    text-decoration: none;
 }
 
 button {
-  font: inherit;
+    font: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--deep-rose);
 }
 
 
@@ -68,25 +75,39 @@ button {
 ========================================================= */
 
 :root {
-  --font-serif: "Cormorant Garamond", serif;
-  --font-sans: "DM Sans", sans-serif;
+    --font-serif: "Cormorant Garamond", serif;
+    --font-sans: "DM Sans", sans-serif;
 
-  --cream: #fbf6ec;
-  --paper: #fffaf2;
+    /* Reference Color Palette from Invitation */
+    --ivory: #F8EFE3;
+    --cream: #F5E7D5;
+    --champagne: #E8C98A;
+    --antique-gold: #B8863B;
+    --soft-gold: #D5A85A;
+    --rose: #A71946;
+    --deep-rose: #8F123B;
+    --blush: #E8B7AD;
+    --peach: #EFC9B8;
+    --warm-brown: #5A3A2A;
+    --dark-brown: #3F2920;
+    --beige: #DCC5A8;
 
-  --gold: #c78a2b;
-  --gold-light: #e7c27a;
+    /* Theme mappings for existing variables */
+    --paper: var(--ivory);
+    --gold: var(--antique-gold);
+    --gold-light: var(--champagne);
+    --brown: var(--dark-brown);
+    --brown-soft: var(--warm-brown);
 
-  --brown: #5b3826;
-  --brown-soft: #80614b;
+    --border: rgba(184, 134, 59, 0.28);
 
-  --border: rgba(199, 138, 43, 0.28);
+    --shadow:
+        0 24px 70px rgba(63, 41, 32, 0.10);
 
-  --shadow:
-    0 24px 70px rgba(79, 49, 29, 0.12);
+    --soft-shadow:
+        0 14px 40px rgba(63, 41, 32, 0.08);
 
-  --soft-shadow:
-    0 14px 40px rgba(79, 49, 29, 0.10);
+    --corner-color: var(--antique-gold);
 }
 
 
@@ -95,56 +116,56 @@ button {
 ========================================================= */
 
 .site-header {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 
-  width: 100%;
-  height: 78px;
+    width: 100%;
+    height: 78px;
 
-  padding: 0 32px;
+    padding: 0 32px;
 
-  display: grid;
-  grid-template-columns: 320px 1fr 180px;
-  align-items: center;
+    display: grid;
+    grid-template-columns: 320px 1fr 180px;
+    align-items: center;
 
-  background: rgba(251, 246, 236, 0.96);
+    background: rgba(248, 239, 227, 0.96);
 
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
 
-  border-bottom: 1px solid rgba(199, 138, 43, 0.16);
+    border-bottom: 1px solid rgba(184, 134, 59, 0.22);
 }
 
 
 /* BRAND */
 
 .brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
 
-  min-width: 0;
+    min-width: 0;
 }
 
 
 /* Circular navbar logo */
 
 .brand-logo-wrap {
-  width: 48px;
-  height: 48px;
+    width: 48px;
+    height: 48px;
 
-  flex: 0 0 48px;
+    flex: 0 0 48px;
 
-  display: grid;
-  place-items: center;
+    display: grid;
+    place-items: center;
 
-  overflow: hidden;
+    overflow: hidden;
 
-  border: 1px solid var(--gold);
-  border-radius: 50%;
+    border: 1px solid var(--gold);
+    border-radius: 50%;
 
-  background: #fbf6ec;
+    background: var(--ivory);
 }
 
 
@@ -154,31 +175,31 @@ button {
 */
 
 .brand-logo {
-  width: 58px;
-  height: 58px;
+    width: 58px;
+    height: 58px;
 
-  display: block;
+    display: block;
 
-  object-fit: cover;
-  object-position: center;
+    object-fit: cover;
+    object-position: center;
 
-  transform: scale(1.05);
+    transform: scale(1.05);
 }
 
 
 /* Brand text */
 
 .brand-name {
-  min-width: 0;
+    min-width: 0;
 
-  font-family: "Cormorant Garamond", serif;
+    font-family: "Cormorant Garamond", serif;
 
-  font-size: 21px;
-  font-weight: 500;
+    font-size: 21px;
+    font-weight: 500;
 
-  letter-spacing: 0.09em;
+    letter-spacing: 0.09em;
 
-  white-space: nowrap;
+    white-space: nowrap;
 }
 
 
@@ -200,10 +221,10 @@ button {
     grid-template-columns: 330px 1fr 180px;
     align-items: center;
 
-    background: rgba(251, 246, 236, 0.96);
+    background: rgba(248, 239, 227, 0.96);
     backdrop-filter: blur(16px);
 
-    border-bottom: 1px solid rgba(199, 138, 43, 0.16);
+    border-bottom: 1px solid rgba(184, 134, 59, 0.22);
 }
 
 
@@ -271,7 +292,7 @@ button {
 
     white-space: nowrap;
 
-    color: var(--brown);
+    color: var(--dark-brown);
 }
 
 
@@ -307,7 +328,7 @@ button {
 
     white-space: nowrap;
 
-    color: var(--brown);
+    color: var(--warm-brown);
 
     transition:
         color 0.25s ease,
@@ -316,7 +337,7 @@ button {
 
 
 .nav a:hover {
-    color: var(--gold);
+    color: var(--deep-rose);
     transform: translateY(-1px);
 }
 
@@ -335,7 +356,7 @@ button {
 
     height: 1.5px;
 
-    background: var(--gold);
+    background: var(--deep-rose);
 
     transition:
         left 0.25s ease,
@@ -429,11 +450,11 @@ button {
 
         gap: 18px;
 
-        background: rgba(251, 246, 236, 0.98);
+        background: rgba(248, 239, 227, 0.98);
 
-        border-bottom: 1px solid rgba(199, 138, 43, 0.18);
+        border-bottom: 1px solid rgba(184, 134, 59, 0.22);
 
-        box-shadow: 0 18px 40px rgba(60, 40, 20, 0.08);
+        box-shadow: 0 18px 40px rgba(63, 41, 32, 0.08);
     }
 
     .nav.open {
@@ -506,11 +527,39 @@ button {
 ========================================================= */
 
 .section {
-  position: relative;
+    position: relative;
 
-  width: 100%;
+    width: 100%;
 
-  padding: 110px 5vw;
+    padding: 110px 5vw;
+}
+
+.hero {
+    background: var(--ivory);
+}
+
+.couple {
+    background: var(--cream);
+}
+
+.moments {
+    background: var(--ivory);
+}
+
+.countdown {
+    background: var(--cream);
+}
+
+.celebrations {
+    background: var(--ivory);
+}
+
+.invitation {
+    background: var(--cream);
+}
+
+.find-way {
+    background: var(--ivory);
 }
 
 
@@ -521,117 +570,117 @@ button {
 
 .section::before,
 .section::after {
-  display: none !important;
+    display: none !important;
 }
 
 
 /* ORNAMENT */
 
 .ornament {
-  width: 100%;
+    width: 100%;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-  gap: 14px;
+    gap: 14px;
 
-  margin: 0 auto 22px;
+    margin: 0 auto 22px;
 
-  color: var(--gold);
+    color: var(--gold);
 }
 
 .ornament span {
-  width: 105px;
-  height: 1px;
+    width: 105px;
+    height: 1px;
 
-  background:
-    linear-gradient(
-      90deg,
-      transparent,
-      var(--gold),
-      transparent
-    );
+    background:
+        linear-gradient(90deg,
+            transparent,
+            var(--gold),
+            transparent);
 }
 
 .ornament b {
-  font-size: 13px;
-  font-weight: 400;
+    font-size: 13px;
+    font-weight: 400;
 }
 
 
 /* EYEBROW */
 
 .eyebrow {
-  margin: 0 0 18px;
+    margin: 0 0 18px;
 
-  color: var(--gold);
+    color: var(--gold);
 
-  font-size: 12px;
+    font-size: 12px;
 
-  letter-spacing: 0.38em;
+    letter-spacing: 0.38em;
 
-  text-transform: uppercase;
+    text-transform: uppercase;
 
-  text-align: center;
+    text-align: center;
 }
 
 
 /* SECTION HEADING */
 
 .section-heading {
-  width: min(1200px, 100%);
+    width: min(1200px, 100%);
 
-  margin: 0 auto 50px;
+    margin: 0 auto 50px;
 
-  text-align: center;
+    text-align: center;
 }
 
 .section-heading h2 {
-  margin: 0;
+    margin: 0;
 
-  font-family: "Cormorant Garamond", serif;
+    font-family: "Cormorant Garamond", serif;
 
-  font-size: clamp(48px, 6vw, 82px);
+    font-size: clamp(48px, 6vw, 82px);
 
-  font-weight: 500;
+    font-weight: 500;
 
-  line-height: 0.95;
+    line-height: 0.95;
 }
 
 
 /* BUTTON */
 
 .gold-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 
-  min-height: 50px;
+    min-height: 50px;
 
-  padding: 14px 26px;
+    padding: 14px 26px;
 
-  border: 1px solid var(--gold);
+    border: 1px solid var(--antique-gold);
 
-  background: rgba(255, 250, 242, 0.7);
+    background: var(--deep-rose);
 
-  color: var(--brown);
+    color: var(--ivory);
 
-  font-size: 11px;
+    font-size: 11px;
 
-  letter-spacing: 0.13em;
+    letter-spacing: 0.13em;
 
-  transition:
-    transform 0.25s ease,
-    background 0.25s ease,
-    color 0.25s ease;
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        border-color 0.25s ease,
+        color 0.25s ease;
 }
 
 .gold-button:hover {
-  background: var(--gold);
-  color: #fff;
+    background: var(--antique-gold);
+    border-color: var(--soft-gold);
+    color: var(--ivory);
 
-  transform: translateY(-2px);
+    transform: translateY(-2px);
 }
 
 
@@ -640,121 +689,118 @@ button {
 ========================================================= */
 
 .hero {
-  position: relative;
+    position: relative;
 
-  width: 100%;
+    width: 100%;
 
-  min-height: calc(100vh - 78px);
+    min-height: calc(100vh - 78px);
 
-  padding:
-    60px 24px
-    90px;
+    padding:
+        60px 24px 90px;
 
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 
-  align-items: center;
-  justify-content: center;
+    align-items: center;
+    justify-content: center;
 
-  text-align: center;
+    text-align: center;
 
-  overflow: hidden;
+    overflow: hidden;
 }
 
 
 /* HERO IMAGE CONTAINER */
 
 .hero-logo {
-  width: min(560px, 52vw);
+    width: min(560px, 52vw);
 
-  margin: 0 auto 18px;
+    margin: 0 auto 18px;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-  position: relative;
+    position: relative;
 
-  background: transparent;
+    background: transparent;
 }
 
 
 /* HERO IMAGE */
 
 .hero-logo img {
-  width: 100%;
-  height: auto;
+    width: 100%;
+    height: auto;
 
-  max-height: 430px;
+    max-height: 430px;
 
-  display: block;
+    display: block;
 
-  object-fit: contain;
+    object-fit: contain;
 
-  border: 0;
-  outline: 0;
+    border: 0;
+    outline: 0;
 
-  filter:
-    drop-shadow(
-      0 18px 28px rgba(70, 40, 20, 0.10)
-    );
+    filter:
+        drop-shadow(0 18px 28px rgba(63, 41, 32, 0.10));
 }
 
 
 /* Hero ornament */
 
 .hero .ornament {
-  margin-top: 0;
-  margin-bottom: 22px;
+    margin-top: 0;
+    margin-bottom: 22px;
 }
 
 
 /* Hero heading */
 
 .hero h1 {
-  max-width: 1250px;
+    max-width: 1250px;
 
-  margin: 0 0 22px;
+    margin: 0 0 22px;
 
-  font-family: "Cormorant Garamond", serif;
+    font-family: "Cormorant Garamond", serif;
 
-  font-size: clamp(58px, 7vw, 108px);
+    font-size: clamp(58px, 7vw, 108px);
 
-  font-weight: 500;
+    font-weight: 500;
 
-  line-height: 0.88;
+    line-height: 0.88;
 
-  letter-spacing: -0.025em;
+    letter-spacing: -0.025em;
 }
 
 
 /* Script */
 
 .hero h1 em {
-  font-family: "Great Vibes", cursive;
+    font-family: "Great Vibes", cursive;
 
-  color: var(--gold);
+    color: var(--gold);
 
-  font-weight: 400;
+    font-weight: 400;
 
-  font-style: normal;
+    font-style: normal;
 }
 
 
 /* Hero subtitle */
 
 .hero-copy {
-  max-width: 800px;
+    max-width: 800px;
 
-  margin: 0 0 30px;
+    margin: 0 0 30px;
 
-  color: var(--brown-soft);
+    color: var(--brown-soft);
 
-  font-family: "Cormorant Garamond", serif;
+    font-family: "Cormorant Garamond", serif;
 
-  font-size: 23px;
+    font-size: 23px;
 
-  line-height: 1.4;
+    line-height: 1.4;
 }
 
 
@@ -763,93 +809,92 @@ button {
 ========================================================= */
 
 .couple-grid {
-  width: min(1080px, 100%);
+    width: min(1080px, 100%);
 
-  margin: auto;
+    margin: auto;
 
-  display: grid;
+    display: grid;
 
-  grid-template-columns:
-    minmax(320px, 1fr)
-    minmax(320px, 1fr);
+    grid-template-columns:
+        minmax(320px, 1fr) minmax(320px, 1fr);
 
-  gap: 70px;
+    gap: 70px;
 
-  align-items: center;
+    align-items: center;
 }
 
 
 /* Photo */
 
 .couple-photo-frame {
-  padding: 10px;
+    padding: 10px;
 
-  border: 1px solid var(--gold);
+    border: 1px solid var(--gold);
 
-  background: var(--paper);
+    background: var(--paper);
 
-  box-shadow: var(--shadow);
+    box-shadow: var(--shadow);
 
-  border-radius: 4px;
+    border-radius: 4px;
 }
 
 .couple-photo-frame img {
-  width: 100%;
+    width: 100%;
 
-  display: block;
+    display: block;
 }
 
 
 /* Couple text */
 
 .couple-copy {
-  text-align: center;
+    text-align: center;
 }
 
 .script {
-  margin: 0;
+    margin: 0;
 
-  color: var(--gold);
+    color: var(--gold);
 
-  font-family: "Great Vibes", cursive;
+    font-family: "Great Vibes", cursive;
 
-  font-size: 42px;
+    font-size: 42px;
 }
 
 .couple-copy h3 {
-  margin: 8px 0 18px;
+    margin: 8px 0 18px;
 
-  font-family: "Cormorant Garamond", serif;
+    font-family: "Cormorant Garamond", serif;
 
-  font-size: 52px;
+    font-size: 52px;
 
-  font-weight: 500;
+    font-weight: 500;
 }
 
 .couple-copy h3 span {
-  color: var(--gold);
+    color: var(--gold);
 
-  font-family: "Great Vibes", cursive;
+    font-family: "Great Vibes", cursive;
 }
 
 .couple-copy p {
-  font-family: "Cormorant Garamond", serif;
+    font-family: "Cormorant Garamond", serif;
 
-  font-size: 22px;
+    font-size: 22px;
 
-  line-height: 1.45;
+    line-height: 1.45;
 }
 
 .couple-copy .small {
-  font-size: 18px;
+    font-size: 18px;
 }
 
 .mini-divider {
-  margin: 20px;
+    margin: 20px;
 
-  color: var(--gold);
+    color: var(--gold);
 
-  font-size: 20px;
+    font-size: 20px;
 }
 
 
@@ -959,12 +1004,12 @@ button {
         align-self: stretch !important;
         justify-self: stretch !important;
 
-        background: #fbf5e9;
+        background: var(--cream);
 
-        border: 1px solid rgba(170, 125, 55, 0.45);
+        border: 1px solid rgba(184, 134, 59, 0.40);
 
         box-shadow:
-            0 10px 28px rgba(70, 45, 20, 0.10);
+            0 10px 28px rgba(63, 41, 32, 0.08);
 
         overflow: visible !important;
     }
@@ -998,7 +1043,7 @@ button {
         margin: 0 !important;
         padding: 0 !important;
 
-        border: 1px solid rgba(170, 125, 55, 0.55);
+        border: 1px solid rgba(184, 134, 59, 0.35);
 
         box-sizing: border-box !important;
 
@@ -1073,13 +1118,11 @@ button {
         box-sizing: border-box !important;
 
         background:
-            linear-gradient(
-                180deg,
-                #fffaf1,
-                #f8ecd6
-            ) !important;
+            linear-gradient(180deg,
+                #FAF4EB,
+                #F5E7D5) !important;
 
-        border-top: 1px solid rgba(170, 125, 55, 0.35);
+        border-top: 1px solid rgba(184, 134, 59, 0.30);
 
         font-size: 19px !important;
 
@@ -1109,7 +1152,7 @@ button {
         align-items: center !important;
         justify-content: center !important;
 
-        border: 1px solid #c18a2c;
+        border: 1px solid var(--antique-gold);
 
         border-radius: 50%;
 
@@ -1354,7 +1397,7 @@ button {
 
     inset: 4px;
 
-    border: 1px solid rgba(167, 112, 36, 0.35);
+    border: 1px solid rgba(184, 134, 59, 0.35);
 
     pointer-events: none;
 
@@ -1378,7 +1421,7 @@ button {
 
     height: calc(100% - 80px);
 
-    border: 1px solid rgba(167, 112, 36, 0.65);
+    border: 1px solid rgba(184, 134, 59, 0.50);
 
     pointer-events: none;
 
@@ -1407,7 +1450,7 @@ button {
     z-index: 1;
 
     transition:
-        transform 0.7s cubic-bezier(.2,.8,.2,1),
+        transform 0.7s cubic-bezier(.2, .8, .2, 1),
         filter 0.5s ease;
 }
 
@@ -1486,11 +1529,9 @@ button {
     gap: 15px;
 
     background:
-        linear-gradient(
-            to bottom,
-            #fffaf0,
-            #f5e8d3
-        );
+        linear-gradient(to bottom,
+            #FAF4EB,
+            #F5E7D5);
 
     font-family: "Cormorant Garamond", serif;
 
@@ -1498,9 +1539,9 @@ button {
 
     font-style: italic;
 
-    color: #432719;
+    color: var(--dark-brown);
 
-    border-top: 1px solid rgba(166, 113, 42, 0.30);
+    border-top: 1px solid rgba(184, 134, 59, 0.30);
 
 }
 
@@ -1522,7 +1563,7 @@ button {
 
     border-radius: 50%;
 
-    border: 1px solid #c78a2c;
+    border: 1px solid var(--antique-gold);
 
     font-family: "Cormorant Garamond", serif;
 
@@ -1530,9 +1571,9 @@ button {
 
     font-style: normal;
 
-    color: #9a6118;
+    color: var(--deep-rose);
 
-    background: rgba(255, 249, 235, 0.8);
+    background: rgba(248, 239, 227, 0.85);
 
 }
 
@@ -1553,7 +1594,7 @@ button {
 
     font-style: normal;
 
-    color: #c17a19;
+    color: var(--rose);
 
 }
 
@@ -1580,12 +1621,11 @@ button {
 .moment-photo:hover {
 
     transform:
-        translateY(-8px)
-        rotate(0deg);
+        translateY(-8px) rotate(0deg);
 
     box-shadow:
-        0 25px 50px rgba(81, 48, 22, 0.18),
-        0 5px 12px rgba(81, 48, 22, 0.10);
+        0 25px 50px rgba(63, 41, 32, 0.12),
+        0 5px 12px rgba(63, 41, 32, 0.08);
 
 }
 
@@ -1611,7 +1651,7 @@ button {
 /* gold decorative corner */
 .moment-photo-large {
 
-    --corner-color: #c88927;
+    --corner-color: var(--antique-gold);
 }
 
 
@@ -1649,9 +1689,7 @@ button {
     .moments {
 
         padding:
-            90px
-            4vw
-            100px;
+            90px 4vw 100px;
 
     }
 
@@ -1700,9 +1738,7 @@ button {
     .moments {
 
         padding:
-            75px
-            18px
-            85px;
+            75px 18px 85px;
 
     }
 
@@ -1850,17 +1886,13 @@ button {
     bottom: 8px;
 
     padding:
-        55px
-        24px
-        22px;
+        55px 24px 22px;
 
     background:
-        linear-gradient(
-            to top,
-            rgba(50,29,18,.72),
-            rgba(50,29,18,.28),
-            transparent
-        );
+        linear-gradient(to top,
+            rgba(63, 41, 32, 0.82),
+            rgba(63, 41, 32, 0.30),
+            transparent);
 
     color: white;
 
@@ -1876,7 +1908,7 @@ button {
 
     letter-spacing: .2em;
 
-    color: #e7c27a;
+    color: var(--champagne);
 
     margin-bottom: 3px;
 }
@@ -1914,16 +1946,16 @@ button {
     top: 14px;
     left: 14px;
 
-    border-top: 1px solid rgba(199,138,43,.7);
-    border-left: 1px solid rgba(199,138,43,.7);
+    border-top: 1px solid rgba(184, 134, 59, 0.65);
+    border-left: 1px solid rgba(184, 134, 59, 0.65);
 }
 
 .moment-item:after {
     right: 14px;
     bottom: 14px;
 
-    border-right: 1px solid rgba(199,138,43,.7);
-    border-bottom: 1px solid rgba(199,138,43,.7);
+    border-right: 1px solid rgba(184, 134, 59, 0.65);
+    border-bottom: 1px solid rgba(184, 134, 59, 0.65);
 }
 
 
@@ -1942,9 +1974,7 @@ button {
         grid-template-columns: 1fr 1fr;
 
         grid-template-rows:
-            380px
-            380px
-            380px;
+            380px 380px 380px;
 
         gap: 20px;
     }
@@ -1989,9 +2019,7 @@ button {
 
     .moments {
         padding:
-            75px
-            16px
-            90px;
+            75px 16px 90px;
     }
 
     .moments-header {
@@ -2020,9 +2048,7 @@ button {
         grid-template-columns: 1fr 1fr;
 
         grid-template-rows:
-            280px
-            330px
-            280px;
+            280px 330px 280px;
 
         gap: 12px;
     }
@@ -2072,9 +2098,7 @@ button {
         bottom: 5px;
 
         padding:
-            45px
-            14px
-            14px;
+            45px 14px 14px;
     }
 
     .moment-item figcaption p {
@@ -2099,9 +2123,7 @@ button {
 
     .moments-gallery {
         grid-template-rows:
-            240px
-            280px
-            240px;
+            240px 280px 240px;
     }
 
     .moments-header h2 {
@@ -2114,129 +2136,130 @@ button {
 ========================================================= */
 
 .countdown {
-  width: 100%;
+    width: 100%;
 
-  padding:
-    95px 24px
-    115px;
+    padding:
+        95px 24px 115px;
 
-  text-align: center;
+    text-align: center;
 }
 
 
 /* Date */
 
 .date-line {
-  margin: 18px 0 0;
+    margin: 18px 0 0;
 
-  color: var(--gold);
+    color: var(--gold);
 
-  font-family: "Great Vibes", cursive;
+    font-family: "Great Vibes", cursive;
 
-  font-size: clamp(30px, 4vw, 54px);
+    font-size: clamp(30px, 4vw, 54px);
 }
 
 
 /* Countdown container */
 
 .countdown-grid {
-  width: min(1080px, 100%);
+    width: min(1080px, 100%);
 
-  margin: 55px auto 0;
+    margin: 55px auto 0;
 
-  display: grid;
+    display: grid;
 
-  grid-template-columns:
-    repeat(4, minmax(0, 1fr));
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
 
-  gap: 26px;
+    gap: 26px;
 
-  justify-content: center;
+    justify-content: center;
 }
 
 
 /* Floating countdown cards */
 
 .time-card {
-  min-height: 185px;
+    min-height: 185px;
 
-  position: relative;
+    position: relative;
 
-  display: flex;
+    display: flex;
 
-  flex-direction: column;
+    flex-direction: column;
 
-  align-items: center;
-  justify-content: center;
+    align-items: center;
+    justify-content: center;
 
-  background:
-    rgba(255, 250, 242, 0.88);
+    background:
+        rgba(248, 239, 227, 0.92);
 
-  border: 1px solid var(--gold-light);
+    border: 1px solid var(--champagne);
 
-  border-radius: 18px;
+    border-radius: 18px;
 
-  box-shadow:
-    0 18px 45px rgba(79, 49, 29, 0.10);
+    box-shadow:
+        0 18px 45px rgba(63, 41, 32, 0.08);
 
-  transform: translateY(0);
+    transform: translateY(0);
 
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
 
 /* Inner border */
 
 .time-card::before {
-  content: "";
+    content: "";
 
-  position: absolute;
+    position: absolute;
 
-  inset: 9px;
+    inset: 9px;
 
-  border: 1px solid rgba(199, 138, 43, 0.24);
+    border: 1px solid rgba(184, 134, 59, 0.22);
 
-  border-radius: 12px;
+    border-radius: 12px;
 
-  pointer-events: none;
+    pointer-events: none;
 }
 
 
 /* Floating effect */
 
 .time-card:hover {
-  transform: translateY(-8px);
+    transform: translateY(-8px);
 
-  box-shadow:
-    0 28px 55px rgba(79, 49, 29, 0.15);
+    box-shadow:
+        0 28px 55px rgba(63, 41, 32, 0.12);
 }
 
 .time-card strong {
-  position: relative;
-  z-index: 1;
+    position: relative;
+    z-index: 1;
 
-  font-family: "Cormorant Garamond", serif;
+    font-family: "Cormorant Garamond", serif;
 
-  font-size: 70px;
+    font-size: 70px;
 
-  font-weight: 500;
+    font-weight: 500;
 
-  line-height: 1;
+    line-height: 1;
+
+    color: var(--deep-rose);
 }
 
 .time-card span {
-  position: relative;
-  z-index: 1;
+    position: relative;
+    z-index: 1;
 
-  margin-top: 8px;
+    margin-top: 8px;
 
-  color: var(--gold);
+    color: var(--warm-brown);
 
-  font-size: 11px;
+    font-size: 11px;
 
-  letter-spacing: 0.3em;
+    letter-spacing: 0.3em;
 }
 
 /* =========================================================
@@ -2267,7 +2290,7 @@ button {
     max-width: 520px;
     font-family: "Cormorant Garamond", serif;
     font-size: clamp(18px, 2.2vw, 22px);
-    color: #806553;
+    color: var(--warm-brown);
     line-height: 1.55;
     font-style: italic;
 }
@@ -2293,16 +2316,16 @@ button {
     transform: translate(-50%, -50%);
     width: 44px;
     height: 44px;
-    border: 1px solid rgba(190, 133, 42, 0.48);
+    border: 1px solid rgba(184, 134, 59, 0.48);
     border-radius: 50%;
-    background: #FFFBF5;
-    color: #C88B2B;
+    background: var(--ivory);
+    color: var(--deep-rose);
     display: grid;
     place-items: center;
     font-family: "Cormorant Garamond", serif;
     font-size: 21px;
     line-height: 1;
-    box-shadow: 0 4px 18px rgba(89, 53, 31, 0.08);
+    box-shadow: 0 4px 18px rgba(63, 41, 32, 0.08);
     z-index: 10;
     pointer-events: none;
 }
@@ -2317,12 +2340,12 @@ button {
     align-items: center;
     text-align: center;
     padding: clamp(42px, 4.5vw, 56px) clamp(24px, 3.5vw, 44px) clamp(34px, 3.8vw, 44px);
-    background: linear-gradient(165deg, #FFFDF9 0%, #FFFBF5 100%);
-    border: 1px solid rgba(190, 133, 42, 0.40);
+    background: linear-gradient(165deg, #FAF4EB 0%, #F5E7D5 100%);
+    border: 1px solid rgba(184, 134, 59, 0.38);
     border-radius: 22px;
     box-shadow:
-        0 18px 50px rgba(89, 53, 31, 0.07),
-        0 4px 14px rgba(89, 53, 31, 0.03);
+        0 18px 50px rgba(63, 41, 32, 0.06),
+        0 4px 14px rgba(63, 41, 32, 0.03);
     overflow: hidden;
     transition:
         transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
@@ -2335,7 +2358,7 @@ button {
     content: "";
     position: absolute;
     inset: 12px;
-    border: 1px solid rgba(190, 133, 42, 0.18);
+    border: 1px solid rgba(184, 134, 59, 0.18);
     border-radius: 15px;
     pointer-events: none;
     z-index: 1;
@@ -2347,7 +2370,7 @@ button {
     position: absolute;
     bottom: 18px;
     right: 22px;
-    color: rgba(190, 133, 42, 0.28);
+    color: rgba(184, 134, 59, 0.30);
     font-size: 14px;
     pointer-events: none;
     z-index: 1;
@@ -2356,21 +2379,19 @@ button {
 .celebration-card:hover {
     transform: translateY(-6px);
     box-shadow:
-        0 28px 70px rgba(89, 53, 31, 0.12),
-        0 8px 24px rgba(89, 53, 31, 0.05);
-    border-color: rgba(190, 133, 42, 0.68);
+        0 28px 70px rgba(63, 41, 32, 0.10),
+        0 8px 24px rgba(63, 41, 32, 0.05);
+    border-color: rgba(184, 134, 59, 0.65);
 }
 
 /* Wedding card specific style */
 .wedding-card {
-    border-color: rgba(190, 133, 42, 0.50);
+    border-color: rgba(184, 134, 59, 0.48);
     background:
-        radial-gradient(
-            circle at 50% 12%,
-            rgba(217, 179, 106, 0.09),
-            transparent 55%
-        ),
-        linear-gradient(165deg, #FFFDF9 0%, #FFFBF5 100%);
+        radial-gradient(circle at 50% 12%,
+            rgba(232, 201, 138, 0.12),
+            transparent 55%),
+        linear-gradient(165deg, #FAF4EB 0%, #F5E7D5 100%);
 }
 
 /* Featured Ribbon (Wedding card) */
@@ -2381,8 +2402,8 @@ button {
     width: 140px;
     padding: 6px 0;
     transform: rotate(45deg);
-    background: linear-gradient(135deg, #D9B36A, #C88B2B);
-    color: #FFFDF9;
+    background: linear-gradient(135deg, var(--champagne), var(--antique-gold));
+    color: var(--ivory);
     font-family: "DM Sans", sans-serif;
     font-size: 8.5px;
     font-weight: 700;
@@ -2390,7 +2411,7 @@ button {
     text-indent: 0.22em;
     text-align: center;
     text-transform: uppercase;
-    box-shadow: 0 3px 10px rgba(89, 53, 31, 0.16);
+    box-shadow: 0 3px 10px rgba(63, 41, 32, 0.14);
     z-index: 5;
     pointer-events: none;
 }
@@ -2411,18 +2432,18 @@ button {
     height: 48px;
     display: grid;
     place-items: center;
-    border: 1px solid rgba(200, 139, 43, 0.45);
+    border: 1px solid rgba(184, 134, 59, 0.45);
     border-radius: 50%;
-    color: #C88B2B;
+    color: var(--antique-gold);
     font-family: "Cormorant Garamond", serif;
     font-size: 22px;
     line-height: 1;
-    background: rgba(255, 251, 245, 0.9);
-    box-shadow: 0 3px 10px rgba(89, 53, 31, 0.04);
+    background: rgba(248, 239, 227, 0.92);
+    box-shadow: 0 3px 10px rgba(63, 41, 32, 0.04);
 }
 
 .event-label {
-    color: #C88B2B;
+    color: var(--antique-gold);
     font-family: "DM Sans", sans-serif;
     font-size: 11px;
     font-weight: 600;
@@ -2448,11 +2469,11 @@ button {
     font-size: clamp(66px, 6.2vw, 84px);
     line-height: 0.82;
     font-weight: 500;
-    color: #59351F;
+    color: var(--deep-rose);
     letter-spacing: -0.02em;
 }
 
-.event-date > div {
+.event-date>div {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -2464,7 +2485,7 @@ button {
     font-size: 13px;
     font-weight: 700;
     letter-spacing: 0.22em;
-    color: #C88B2B;
+    color: var(--antique-gold);
     text-transform: uppercase;
     line-height: 1.2;
 }
@@ -2475,7 +2496,7 @@ button {
     font-size: 10.5px;
     font-weight: 500;
     letter-spacing: 0.22em;
-    color: #806553;
+    color: var(--warm-brown);
     text-transform: uppercase;
 }
 
@@ -2486,7 +2507,7 @@ button {
     justify-content: center;
     gap: 8px;
     margin-bottom: 20px;
-    color: #59351F;
+    color: var(--dark-brown);
     position: relative;
     z-index: 2;
 }
@@ -2496,7 +2517,7 @@ button {
     font-size: 24px;
     font-weight: 600;
     letter-spacing: 0.04em;
-    color: #59351F;
+    color: var(--dark-brown);
 }
 
 .event-time small {
@@ -2504,7 +2525,7 @@ button {
     font-size: 10px;
     font-weight: 600;
     letter-spacing: 0.16em;
-    color: #C88B2B;
+    color: var(--antique-gold);
     text-transform: uppercase;
 }
 
@@ -2524,20 +2545,21 @@ button {
     font-weight: 400;
     letter-spacing: 2px;
     line-height: 1;
-    color: #59351F;
+    color: var(--dark-brown);
     vertical-align: baseline;
 }
 
 .venue-time .time-dash {
     font-family: var(--font-serif);
     font-size: 20px;
-    color: var(--gold, #C88B2B);
+    color: var(--antique-gold);
     line-height: 1;
     display: inline-flex;
     align-items: center;
 }
 
 @media (max-width: 600px) {
+
     .venue-time .time-main,
     .venue-time .time-end {
         font-size: 21px;
@@ -2579,15 +2601,15 @@ button {
     content: "";
     height: 1px;
     flex: 1;
-    background: linear-gradient(90deg, transparent, rgba(200, 139, 43, 0.45));
+    background: linear-gradient(90deg, transparent, rgba(184, 134, 59, 0.45));
 }
 
 .event-divider::after {
-    background: linear-gradient(90deg, rgba(200, 139, 43, 0.45), transparent);
+    background: linear-gradient(90deg, rgba(184, 134, 59, 0.45), transparent);
 }
 
 .event-divider span {
-    color: #C88B2B;
+    color: var(--antique-gold);
     font-size: 12px;
     line-height: 1;
 }
@@ -2610,12 +2632,12 @@ button {
     font-size: clamp(23px, 2.2vw, 28px);
     line-height: 1.25;
     font-weight: 600;
-    color: #59351F;
+    color: var(--deep-rose);
 }
 
 .event-location p {
     margin: 0;
-    color: #806553;
+    color: var(--warm-brown);
     font-family: "Cormorant Garamond", serif;
     font-size: 18px;
     font-style: italic;
@@ -2639,10 +2661,10 @@ button {
     gap: 10px;
     min-width: 200px;
     padding: 13px 26px;
-    border: 1px solid rgba(200, 139, 43, 0.50);
+    border: 1px solid rgba(184, 134, 59, 0.50);
     border-radius: 999px;
-    background: rgba(255, 251, 245, 0.95);
-    color: #59351F;
+    background: rgba(248, 239, 227, 0.95);
+    color: var(--dark-brown);
     font-family: "DM Sans", sans-serif;
     font-size: 10.5px;
     font-weight: 600;
@@ -2650,25 +2672,25 @@ button {
     text-transform: uppercase;
     text-decoration: none;
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: 0 2px 8px rgba(89, 53, 31, 0.04);
+    box-shadow: 0 2px 8px rgba(63, 41, 32, 0.04);
 }
 
 .direction-btn span {
     font-size: 14px;
-    color: #C88B2B;
+    color: var(--deep-rose);
     transition: transform 0.25s ease, color 0.25s ease;
 }
 
 .direction-btn:hover {
-    background: #C88B2B;
-    color: #FFFFFF;
-    border-color: #C88B2B;
+    background: var(--deep-rose);
+    color: var(--ivory);
+    border-color: var(--deep-rose);
     transform: translateY(-2px);
-    box-shadow: 0 8px 22px rgba(200, 139, 43, 0.28);
+    box-shadow: 0 8px 22px rgba(143, 18, 59, 0.28);
 }
 
 .direction-btn:hover span {
-    color: #FFFFFF;
+    color: var(--champagne);
     transform: translate(2px, -2px);
 }
 
@@ -2682,7 +2704,7 @@ button {
 }
 
 .celebration-note span {
-    color: #806553;
+    color: var(--warm-brown);
     font-family: "Cormorant Garamond", serif;
     font-size: 18px;
     font-style: italic;
@@ -2691,7 +2713,7 @@ button {
 .celebration-note strong {
     font-family: "Great Vibes", cursive;
     font-weight: 400;
-    color: #C88B2B;
+    color: var(--deep-rose);
     font-size: 36px;
 }
 
@@ -2835,50 +2857,57 @@ button {
    ========================================================= */
 
 .invitation {
-  padding-top: 95px;
+    padding-top: 95px;
 }
 
 /* Main invitation preview */
 .invitation-display {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
 }
 
 /* Preview frame on the page */
 .invitation-frame {
-  width: min(720px, 90vw);
-  position: relative;
-  padding: 7px;
-  border: 1px solid var(--gold);
-  background: var(--paper);
-  box-shadow: 0 28px 70px rgba(74,43,22,.18);
-  border-radius: 10px;
+    width: min(720px, 90vw);
+    position: relative;
+    padding: 7px;
+    border: 1px solid var(--antique-gold);
+    background: var(--ivory);
+    box-shadow: 0 28px 70px rgba(63, 41, 32, 0.12);
+    border-radius: 10px;
 }
 
-.invitation-frame > img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 5px;
+.invitation-frame>img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 5px;
 }
 
 /* Preview close button if used */
 .invite-close {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 1px solid var(--gold);
-  background: rgba(255,250,242,.96);
-  color: var(--brown);
-  font-size: 24px;
-  line-height: 1;
-  cursor: pointer;
-  z-index: 2;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--antique-gold);
+    background: rgba(248, 239, 227, 0.96);
+    color: var(--dark-brown);
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 2;
+    transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+.invite-close:hover {
+    background: var(--deep-rose);
+    border-color: var(--deep-rose);
+    color: var(--ivory);
 }
 
 
@@ -2893,31 +2922,31 @@ button {
 */
 
 .invitation-modal {
-  position: fixed;
-  inset: 0;
-  z-index: 2000;
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
 
-  display: none;
-  align-items: center;
-  justify-content: center;
+    display: none;
+    align-items: center;
+    justify-content: center;
 
-  padding: 20px;
+    padding: 20px;
 
-  overflow: hidden;
+    overflow: hidden;
 }
 
 .invitation-modal.open {
-  display: flex;
+    display: flex;
 }
 
 
 /* Dark blurred background */
 .modal-backdrop {
-  position: absolute;
-  inset: 0;
+    position: absolute;
+    inset: 0;
 
-  background: rgba(38,22,13,.72);
-  backdrop-filter: blur(8px);
+    background: rgba(45, 28, 20, 0.72);
+    backdrop-filter: blur(8px);
 }
 
 
@@ -2929,29 +2958,29 @@ button {
 */
 
 .modal-panel {
-  position: relative;
-  z-index: 1;
+    position: relative;
+    z-index: 1;
 
-  width: fit-content;
-  max-width: 92vw;
-  max-height: 94vh;
+    width: fit-content;
+    max-width: 92vw;
+    max-height: 94vh;
 
-  padding: 7px;
+    padding: 7px;
 
-  background: var(--paper);
-  border: 1px solid var(--gold);
+    background: var(--ivory);
+    border: 1px solid var(--antique-gold);
 
-  box-shadow:
-    0 30px 100px rgba(0,0,0,.32),
-    0 0 0 1px rgba(199,138,43,.08);
+    box-shadow:
+        0 30px 100px rgba(45, 28, 20, 0.35),
+        0 0 0 1px rgba(184, 134, 59, 0.20);
 
-  border-radius: 10px;
+    border-radius: 10px;
 
-  overflow: hidden;
+    overflow: hidden;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
@@ -2963,17 +2992,17 @@ button {
 */
 
 .modal-panel img {
-  display: block;
+    display: block;
 
-  width: auto;
-  height: auto;
+    width: auto;
+    height: auto;
 
-  max-width: calc(92vw - 14px);
-  max-height: calc(94vh - 14px);
+    max-width: calc(92vw - 14px);
+    max-height: calc(94vh - 14px);
 
-  object-fit: contain;
+    object-fit: contain;
 
-  border-radius: 4px;
+    border-radius: 4px;
 }
 
 
@@ -2982,47 +3011,49 @@ button {
    ========================================================= */
 
 .modal-close {
-  position: absolute;
+    position: absolute;
 
-  top: 14px;
-  right: 14px;
+    top: 14px;
+    right: 14px;
 
-  z-index: 10;
+    z-index: 10;
 
-  width: 46px;
-  height: 46px;
+    width: 46px;
+    height: 46px;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-  border-radius: 50%;
+    border-radius: 50%;
 
-  border: 1px solid var(--gold);
+    border: 1px solid var(--antique-gold);
 
-  background: rgba(255,250,242,.97);
+    background: rgba(248, 239, 227, 0.97);
 
-  color: var(--brown);
+    color: var(--dark-brown);
 
-  font-size: 25px;
-  font-weight: 400;
+    font-size: 25px;
+    font-weight: 400;
 
-  line-height: 1;
+    line-height: 1;
 
-  cursor: pointer;
+    cursor: pointer;
 
-  box-shadow: 0 5px 18px rgba(60,40,20,.12);
+    box-shadow: 0 5px 18px rgba(63, 41, 32, 0.12);
 
-  transition:
-    transform .25s ease,
-    background .25s ease,
-    color .25s ease;
+    transition:
+        transform .25s ease,
+        background .25s ease,
+        border-color .25s ease,
+        color .25s ease;
 }
 
 .modal-close:hover {
-  transform: rotate(90deg) scale(1.05);
-  background: var(--gold);
-  color: white;
+    transform: rotate(90deg) scale(1.05);
+    background: var(--deep-rose);
+    border-color: var(--deep-rose);
+    color: var(--ivory);
 }
 
 
@@ -3031,32 +3062,39 @@ button {
    ========================================================= */
 
 .open-invitation {
-  border: 0;
+    border: 1px solid var(--antique-gold);
 
-  background: var(--gold);
-  color: white;
+    background: var(--deep-rose);
+    color: var(--ivory);
 
-  border-radius: 999px;
+    border-radius: 999px;
 
-  padding: 15px 34px;
+    padding: 15px 34px;
 
-  letter-spacing: .14em;
-  font-size: 11px;
+    letter-spacing: .14em;
+    font-size: 11px;
 
-  box-shadow: 0 10px 30px rgba(180,115,20,.22);
+    box-shadow: 0 10px 30px rgba(143, 18, 59, 0.25);
 
-  cursor: pointer;
+    cursor: pointer;
 
-  transition:
-    transform .25s ease,
-    box-shadow .25s ease;
+    transition:
+        transform .25s ease,
+        background .25s ease,
+        border-color .25s ease,
+        color .25s ease,
+        box-shadow .25s ease;
 }
 
 .open-invitation:hover {
-  transform: translateY(-3px);
+    transform: translateY(-3px);
 
-  box-shadow:
-    0 16px 34px rgba(180,115,20,.28);
+    background: var(--antique-gold);
+    border-color: var(--soft-gold);
+    color: var(--ivory);
+
+    box-shadow:
+        0 16px 34px rgba(184, 134, 59, 0.32);
 }
 
 
@@ -3066,40 +3104,40 @@ button {
 
 @media (max-width: 760px) {
 
-  .invitation {
-    padding-top: 75px;
-  }
+    .invitation {
+        padding-top: 75px;
+    }
 
-  .invitation-frame {
-    width: 92vw;
-    padding: 5px;
-  }
+    .invitation-frame {
+        width: 92vw;
+        padding: 5px;
+    }
 
-  .invitation-modal {
-    padding: 12px;
-  }
+    .invitation-modal {
+        padding: 12px;
+    }
 
-  .modal-panel {
-    max-width: 96vw;
-    max-height: 94vh;
-    padding: 5px;
-    border-radius: 8px;
-  }
+    .modal-panel {
+        max-width: 96vw;
+        max-height: 94vh;
+        padding: 5px;
+        border-radius: 8px;
+    }
 
-  .modal-panel img {
-    max-width: calc(96vw - 10px);
-    max-height: calc(94vh - 10px);
-  }
+    .modal-panel img {
+        max-width: calc(96vw - 10px);
+        max-height: calc(94vh - 10px);
+    }
 
-  .modal-close {
-    width: 40px;
-    height: 40px;
+    .modal-close {
+        width: 40px;
+        height: 40px;
 
-    top: 10px;
-    right: 10px;
+        top: 10px;
+        right: 10px;
 
-    font-size: 22px;
-  }
+        font-size: 22px;
+    }
 }
 
 
@@ -3109,34 +3147,34 @@ button {
 
 @media (max-width: 420px) {
 
-  .invitation-frame {
-    width: 94vw;
-  }
+    .invitation-frame {
+        width: 94vw;
+    }
 
-  .invitation-modal {
-    padding: 8px;
-  }
+    .invitation-modal {
+        padding: 8px;
+    }
 
-  .modal-panel {
-    max-width: 98vw;
-    max-height: 96vh;
-    padding: 4px;
-  }
+    .modal-panel {
+        max-width: 98vw;
+        max-height: 96vh;
+        padding: 4px;
+    }
 
-  .modal-panel img {
-    max-width: calc(98vw - 8px);
-    max-height: calc(96vh - 8px);
-  }
+    .modal-panel img {
+        max-width: calc(98vw - 8px);
+        max-height: calc(96vh - 8px);
+    }
 
-  .modal-close {
-    width: 36px;
-    height: 36px;
+    .modal-close {
+        width: 36px;
+        height: 36px;
 
-    top: 8px;
-    right: 8px;
+        top: 8px;
+        right: 8px;
 
-    font-size: 20px;
-  }
+        font-size: 20px;
+    }
 }
 
 /* =========================================================
@@ -3170,9 +3208,7 @@ button {
         padding: 0 42px;
 
         grid-template-columns:
-            290px
-            minmax(500px, 1fr)
-            120px;
+            290px minmax(500px, 1fr) 120px;
     }
 
     .brand {
@@ -3271,8 +3307,7 @@ button {
         width: min(1180px, 90vw);
 
         grid-template-columns:
-            minmax(450px, 1fr)
-            minmax(450px, 1fr);
+            minmax(450px, 1fr) minmax(450px, 1fr);
 
         gap: 90px;
     }
@@ -3327,13 +3362,10 @@ button {
         display: grid;
 
         grid-template-columns:
-            1.35fr
-            1fr
-            1fr;
+            1.35fr 1fr 1fr;
 
         grid-template-rows:
-            280px
-            280px;
+            280px 280px;
 
         gap: 22px;
     }
@@ -3351,7 +3383,7 @@ button {
         padding: 8px;
 
         box-shadow:
-            0 20px 55px rgba(79, 49, 29, .13);
+            0 20px 55px rgba(63, 41, 32, 0.10);
 
         border-radius: 8px;
 
@@ -3389,8 +3421,7 @@ button {
         position: absolute;
         inset: 8px;
 
-        border: 1px solid
-            rgba(255, 250, 242, .55);
+        border: 1px solid rgba(248, 239, 227, 0.55);
 
         pointer-events: none;
 
@@ -3419,12 +3450,10 @@ button {
         font-size: 19px;
 
         background:
-            linear-gradient(
-                90deg,
-                rgba(45, 25, 14, .78),
-                rgba(45, 25, 14, .35),
-                transparent
-            );
+            linear-gradient(90deg,
+                rgba(63, 41, 32, 0.85),
+                rgba(63, 41, 32, 0.40),
+                transparent);
 
         backdrop-filter: blur(3px);
 
@@ -3501,10 +3530,10 @@ button {
         border-radius: 12px;
 
         box-shadow:
-            0 30px 80px rgba(74, 43, 22, .18);
+            0 30px 80px rgba(63, 41, 32, 0.12);
     }
 
-    .invitation-frame > img {
+    .invitation-frame>img {
         max-height: 760px;
 
         object-fit: contain;
@@ -3553,13 +3582,13 @@ button {
         padding: 42px;
 
         background:
-            rgba(255, 250, 242, .88);
+            rgba(248, 239, 227, 0.92);
 
         border:
-            1px solid rgba(199, 138, 43, .3);
+            1px solid rgba(184, 134, 59, 0.32);
 
         box-shadow:
-            0 24px 65px rgba(79, 49, 29, .12);
+            0 24px 65px rgba(63, 41, 32, 0.08);
 
         border-radius: 16px;
     }
@@ -3576,6 +3605,8 @@ button {
         font-weight: 500;
 
         margin: 18px 0;
+
+        color: var(--deep-rose);
     }
 
     .venue-location {
@@ -3598,11 +3629,11 @@ button {
         overflow: hidden;
 
         border:
-            1px solid rgba(199, 138, 43, .3);
+            1px solid rgba(184, 134, 59, 0.30);
 
         border-radius: 10px;
 
-        background: #eee;
+        background: var(--cream);
     }
 
     .map-preview iframe {
@@ -3629,9 +3660,13 @@ button {
         padding: 14px 22px;
 
         border:
-            1px solid var(--gold);
+            1px solid var(--antique-gold);
 
-        color: var(--brown);
+        border-radius: 999px;
+
+        background: rgba(248, 239, 227, 0.95);
+
+        color: var(--dark-brown);
 
         font-size: 11px;
 
@@ -3641,9 +3676,11 @@ button {
     }
 
     .direction-button:hover {
-        background: var(--gold);
+        background: var(--deep-rose);
 
-        color: white;
+        border-color: var(--deep-rose);
+
+        color: var(--ivory);
 
         transform: translateY(-2px);
     }
@@ -3702,8 +3739,7 @@ button {
         width: 1200px;
 
         grid-template-rows:
-            310px
-            310px;
+            310px 310px;
     }
 
     .couple-grid {
@@ -3726,7 +3762,7 @@ button {
 }
 
 .reception-venue {
-    border-top: 2px solid rgba(199,138,43,.55);
+    border-top: 2px solid rgba(184, 134, 59, 0.45);
 }
 
 
@@ -3778,6 +3814,13 @@ button {
         height: 52px;
 
         font-size: 23px;
+        color: var(--antique-gold);
+    }
+
+    .venue-label {
+        color: var(--antique-gold);
+        letter-spacing: 0.22em;
+        font-size: 11px;
     }
 
 
@@ -3864,38 +3907,39 @@ button {
 ========================================================= */
 
 .music-button {
-  position: fixed;
+    position: fixed;
 
-  left: 28px;
-  bottom: 24px;
+    left: 28px;
+    bottom: 24px;
 
-  z-index: 900;
+    z-index: 900;
 
-  padding: 9px 15px;
+    padding: 9px 15px;
 
-  border: 1px solid var(--gold);
+    border: 1px solid var(--antique-gold);
 
-  border-radius: 999px;
+    border-radius: 999px;
 
-  background:
-    rgba(255, 250, 242, 0.95);
+    background:
+        rgba(248, 239, 227, 0.95);
 
-  color: var(--brown);
+    color: var(--dark-brown);
 
-  box-shadow:
-    0 8px 22px rgba(60, 40, 20, 0.12);
-
-  cursor: pointer;
-
-  font-size: 12px;
-
-  letter-spacing: 0.08em;
-}
-.music-button.playing {
-    border-color: var(--gold);
     box-shadow:
-        0 12px 30px rgba(79, 49, 29, 0.16),
-        0 0 0 3px rgba(199, 138, 43, 0.08);
+        0 8px 22px rgba(63, 41, 32, 0.12);
+
+    cursor: pointer;
+
+    font-size: 12px;
+
+    letter-spacing: 0.08em;
+}
+
+.music-button.playing {
+    border-color: var(--deep-rose);
+    box-shadow:
+        0 12px 30px rgba(63, 41, 32, 0.16),
+        0 0 0 3px rgba(143, 18, 59, 0.14);
 }
 
 .music-button.playing span:first-child {
@@ -3904,7 +3948,9 @@ button {
 }
 
 @keyframes musicPulse {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: scale(1);
     }
 
@@ -3918,26 +3964,36 @@ button {
 ========================================================= */
 
 footer {
-  width: 100%;
+    width: 100%;
 
-  padding: 34px 5vw;
+    padding: 34px 5vw;
 
-  display: flex;
+    display: flex;
 
-  align-items: center;
-  justify-content: space-between;
+    align-items: center;
+    justify-content: space-between;
 
-  font-size: 12px;
+    font-size: 12px;
 
-  letter-spacing: 0.15em;
+    letter-spacing: 0.15em;
+
+    background: var(--dark-brown);
+    color: var(--ivory);
+    border-top: 1px solid rgba(232, 201, 138, 0.30);
 }
 
 footer p {
-  margin: 0;
+    margin: 0;
+    color: var(--ivory);
 }
 
 footer a {
-  color: var(--gold);
+    color: var(--champagne);
+    transition: color 0.25s ease;
+}
+
+footer a:hover {
+    color: var(--soft-gold);
 }
 
 
@@ -3947,22 +4003,22 @@ footer a {
 
 @media (max-width: 1180px) {
 
-  .site-header {
-    grid-template-columns: 270px 1fr 120px;
-    padding: 0 24px;
-  }
+    .site-header {
+        grid-template-columns: 270px 1fr 120px;
+        padding: 0 24px;
+    }
 
-  .nav {
-    gap: 20px;
-  }
+    .nav {
+        gap: 20px;
+    }
 
-  .nav a {
-    font-size: 14px;
-  }
+    .nav a {
+        font-size: 14px;
+    }
 
-  .hero-logo {
-    width: min(500px, 55vw);
-  }
+    .hero-logo {
+        width: min(500px, 55vw);
+    }
 }
 
 
@@ -3972,49 +4028,51 @@ footer a {
 
 @media (max-width: 980px) {
 
-  .site-header {
-    height: 74px;
+    .site-header {
+        height: 74px;
 
-    grid-template-columns: auto auto;
+        grid-template-columns: auto auto;
 
-    justify-content: space-between;
+        justify-content: space-between;
 
-    padding: 0 20px;
-  }
+        padding: 0 20px;
+    }
 
-  .nav {
-    position: absolute;
+    .nav {
+        position: absolute;
 
-    top: 74px;
-    left: 0;
-    right: 0;
+        top: 74px;
+        left: 0;
+        right: 0;
 
-    display: none;
+        display: none;
 
-    padding: 24px;
+        padding: 24px;
 
-    flex-direction: column;
+        flex-direction: column;
 
-    gap: 18px;
+        gap: 18px;
 
-    background:
-      rgba(251, 246, 236, 0.98);
+        background:
+            rgba(248, 239, 227, 0.98);
 
-    box-shadow:
-      0 18px 35px rgba(60, 40, 20, 0.08);
-  }
+        border-bottom: 1px solid rgba(184, 134, 59, 0.22);
 
-  .nav.open {
-    display: flex;
-  }
+        box-shadow:
+            0 18px 35px rgba(63, 41, 32, 0.08);
+    }
 
-  .nav-toggle {
-    display: block;
-  }
+    .nav.open {
+        display: flex;
+    }
 
-  .countdown-grid {
-    gap: 16px;
-  }
+    .nav-toggle {
+        display: block;
+    }
+
+    .countdown-grid {
+        gap: 16px;
+    }
 }
 
 
@@ -4024,190 +4082,188 @@ footer a {
 
 @media (max-width: 760px) {
 
-  .site-header {
-    height: 68px;
+    .site-header {
+        height: 68px;
 
-    padding: 0 16px;
-  }
+        padding: 0 16px;
+    }
 
-  .nav {
-    top: 68px;
-  }
+    .nav {
+        top: 68px;
+    }
 
-  .brand-logo-wrap {
-    width: 42px;
-    height: 42px;
+    .brand-logo-wrap {
+        width: 42px;
+        height: 42px;
 
-    flex-basis: 42px;
-  }
+        flex-basis: 42px;
+    }
 
-  .brand-logo {
-    width: 52px;
-    height: 52px;
-  }
+    .brand-logo {
+        width: 52px;
+        height: 52px;
+    }
 
-  .brand-name {
-    font-size: 18px;
-  }
+    .brand-name {
+        font-size: 18px;
+    }
 
 
-  /* GLOBAL */
+    /* GLOBAL */
 
-  .section {
-    padding:
-      80px 18px;
-  }
+    .section {
+        padding:
+            80px 18px;
+    }
 
 
-  /* HERO */
+    /* HERO */
 
-  .hero {
-    min-height: calc(100vh - 68px);
+    .hero {
+        min-height: calc(100vh - 68px);
 
-    padding:
-      45px 16px
-      75px;
-  }
+        padding:
+            45px 16px 75px;
+    }
 
-  .hero-logo {
-    width: min(390px, 88vw);
+    .hero-logo {
+        width: min(390px, 88vw);
 
-    margin-bottom: 10px;
-  }
+        margin-bottom: 10px;
+    }
 
-  .hero-logo img {
-    max-height: none;
-  }
+    .hero-logo img {
+        max-height: none;
+    }
 
-  .hero .ornament {
-    margin-bottom: 18px;
-  }
+    .hero .ornament {
+        margin-bottom: 18px;
+    }
 
-  .hero h1 {
-    max-width: 95vw;
+    .hero h1 {
+        max-width: 95vw;
 
-    font-size: 56px;
+        font-size: 56px;
 
-    line-height: 0.9;
-  }
+        line-height: 0.9;
+    }
 
-  .hero-copy {
-    max-width: 90vw;
+    .hero-copy {
+        max-width: 90vw;
 
-    font-size: 20px;
-  }
+        font-size: 20px;
+    }
 
 
-  /* ORNAMENT */
+    /* ORNAMENT */
 
-  .ornament span {
-    width: 60px;
-  }
+    .ornament span {
+        width: 60px;
+    }
 
 
-  /* COUPLE */
+    /* COUPLE */
 
-  .couple-grid {
-    grid-template-columns: 1fr;
+    .couple-grid {
+        grid-template-columns: 1fr;
 
-    gap: 24px;
-  }
+        gap: 24px;
+    }
 
-  .couple-copy h3 {
-    font-size: 45px;
-  }
+    .couple-copy h3 {
+        font-size: 45px;
+    }
 
 
-  /* MOMENTS */
+    /* MOMENTS */
 
-  .moment-grid {
-    grid-template-columns: 1fr;
+    .moment-grid {
+        grid-template-columns: 1fr;
 
-    gap: 24px;
-  }
+        gap: 24px;
+    }
 
 
-  /* COUNTDOWN */
+    /* COUNTDOWN */
 
-  .countdown {
-    padding:
-      80px 16px
-      90px;
-  }
+    .countdown {
+        padding:
+            80px 16px 90px;
+    }
 
-  .countdown-grid {
-    grid-template-columns:
-      repeat(2, minmax(0, 1fr));
+    .countdown-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
 
-    gap: 14px;
+        gap: 14px;
 
-    margin-top: 38px;
-  }
+        margin-top: 38px;
+    }
 
-  .time-card {
-    min-height: 155px;
+    .time-card {
+        min-height: 155px;
 
-    border-radius: 16px;
-  }
+        border-radius: 16px;
+    }
 
-  .time-card strong {
-    font-size: 58px;
-  }
+    .time-card strong {
+        font-size: 58px;
+    }
 
 
-  /* EVENTS */
+    /* EVENTS */
 
-  .events {
-    grid-template-columns: 1fr;
+    .events {
+        grid-template-columns: 1fr;
 
-    gap: 24px;
-  }
+        gap: 24px;
+    }
 
-  .event-card.featured {
-    transform: none;
-  }
+    .event-card.featured {
+        transform: none;
+    }
 
 
-  /* LOCATION */
+    /* LOCATION */
 
-  .location-card {
-    flex-direction: column;
+    .location-card {
+        flex-direction: column;
 
-    text-align: center;
-  }
+        text-align: center;
+    }
 
 
-  /* INVITATION */
+    /* INVITATION */
 
-  .invitation-frame {
-    width: 96vw;
+    .invitation-frame {
+        width: 96vw;
 
-    padding: 6px;
-  }
+        padding: 6px;
+    }
 
-  .invite-close {
-    top: 12px;
-    right: 12px;
-  }
+    .invite-close {
+        top: 12px;
+        right: 12px;
+    }
 
 
-  /* FOOTER */
+    /* FOOTER */
 
-  footer {
-    flex-direction: column;
+    footer {
+        flex-direction: column;
 
-    gap: 14px;
+        gap: 14px;
 
-    text-align: center;
-  }
+        text-align: center;
+    }
 
 
-  /* MUSIC */
+    /* MUSIC */
 
-  .music-button {
-    left: 16px;
-    bottom: 16px;
-  }
+    .music-button {
+        left: 16px;
+        bottom: 16px;
+    }
 }
 
 
@@ -4217,49 +4273,49 @@ footer a {
 
 @media (max-width: 420px) {
 
-  .brand-name {
-    font-size: 16px;
+    .brand-name {
+        font-size: 16px;
 
-    letter-spacing: 0.07em;
-  }
+        letter-spacing: 0.07em;
+    }
 
-  .hero {
-    padding-top: 35px;
-  }
+    .hero {
+        padding-top: 35px;
+    }
 
-  .hero-logo {
-    width: min(340px, 92vw);
-  }
+    .hero-logo {
+        width: min(340px, 92vw);
+    }
 
-  .hero h1 {
-    font-size: 48px;
-  }
+    .hero h1 {
+        font-size: 48px;
+    }
 
-  .hero-copy {
-    font-size: 19px;
-  }
+    .hero-copy {
+        font-size: 19px;
+    }
 
-  .date-line {
-    font-size: 28px;
-  }
+    .date-line {
+        font-size: 28px;
+    }
 
-  .countdown-grid {
-    gap: 10px;
-  }
+    .countdown-grid {
+        gap: 10px;
+    }
 
-  .time-card {
-    min-height: 140px;
-  }
+    .time-card {
+        min-height: 140px;
+    }
 
-  .time-card strong {
-    font-size: 50px;
-  }
+    .time-card strong {
+        font-size: 50px;
+    }
 
-  .time-card span {
-    font-size: 9px;
+    .time-card span {
+        font-size: 9px;
 
-    letter-spacing: 0.22em;
-  }
+        letter-spacing: 0.22em;
+    }
 }
 
 
@@ -4269,22 +4325,23 @@ footer a {
 
 @media (max-width: 340px) {
 
-  .brand-name {
-    font-size: 14px;
-  }
+    .brand-name {
+        font-size: 14px;
+    }
 
-  .hero h1 {
-    font-size: 43px;
-  }
+    .hero h1 {
+        font-size: 43px;
+    }
 
-  .hero-logo {
-    width: 90vw;
-  }
+    .hero-logo {
+        width: 90vw;
+    }
 
-  .time-card strong {
-    font-size: 44px;
-  }
+    .time-card strong {
+        font-size: 44px;
+    }
 }
+
 /* =========================================================
    WEDDING INTRO SCREEN
 ========================================================= */
@@ -4302,7 +4359,7 @@ footer a {
     align-items: center;
     justify-content: center;
 
-    background: #f8f3e9;
+    background: var(--ivory);
 
     overflow: hidden;
 
@@ -4378,11 +4435,9 @@ footer a {
     pointer-events: none;
 
     background:
-        linear-gradient(
-            to bottom,
-            rgba(40, 25, 15, 0.05),
-            rgba(40, 25, 15, 0.02)
-        );
+        linear-gradient(to bottom,
+            rgba(63, 41, 32, 0.05),
+            rgba(63, 41, 32, 0.02));
 }
 
 
@@ -4406,13 +4461,13 @@ footer a {
 
     padding: 15px 24px;
 
-    border: 1px solid rgba(164, 111, 43, 0.8);
+    border: 1px solid rgba(184, 134, 59, 0.75);
 
     border-radius: 999px;
 
-    background: rgba(255, 250, 242, 0.96);
+    background: rgba(248, 239, 227, 0.96);
 
-    color: #62432f;
+    color: var(--dark-brown);
 
     font-family: inherit;
 
@@ -4424,21 +4479,25 @@ footer a {
     cursor: pointer;
 
     box-shadow:
-        0 10px 30px rgba(70, 45, 25, 0.15);
+        0 10px 30px rgba(63, 41, 32, 0.14);
 
     transition:
         transform 0.3s ease,
         box-shadow 0.3s ease,
+        border-color 0.3s ease,
+        color 0.3s ease,
         background 0.3s ease;
 }
 
 .enter-wedding:hover {
     transform: translateX(-50%) translateY(-3px);
 
-    background: #fffaf2;
+    background: var(--deep-rose);
+    border-color: var(--deep-rose);
+    color: var(--ivory);
 
     box-shadow:
-        0 15px 35px rgba(70, 45, 25, 0.22);
+        0 15px 35px rgba(143, 18, 59, 0.25);
 }
 
 
@@ -4510,6 +4569,7 @@ footer a {
     }
 
 }
+
 /* =========================================================
    PC / DESKTOP ONLY
    Wedding Website — Abisha & Rohit
@@ -4541,9 +4601,7 @@ footer a {
         padding: 0 42px;
 
         grid-template-columns:
-            290px
-            minmax(500px, 1fr)
-            120px;
+            290px minmax(500px, 1fr) 120px;
     }
 
     .brand {
@@ -4642,8 +4700,7 @@ footer a {
         width: min(1180px, 90vw);
 
         grid-template-columns:
-            minmax(450px, 1fr)
-            minmax(450px, 1fr);
+            minmax(450px, 1fr) minmax(450px, 1fr);
 
         gap: 90px;
     }
@@ -4698,13 +4755,10 @@ footer a {
         display: grid;
 
         grid-template-columns:
-            1.35fr
-            1fr
-            1fr;
+            1.35fr 1fr 1fr;
 
         grid-template-rows:
-            280px
-            280px;
+            280px 280px;
 
         gap: 22px;
     }
@@ -4722,7 +4776,7 @@ footer a {
         padding: 8px;
 
         box-shadow:
-            0 20px 55px rgba(79, 49, 29, .13);
+            0 20px 55px rgba(63, 41, 32, 0.10);
 
         border-radius: 8px;
 
@@ -4760,8 +4814,7 @@ footer a {
         position: absolute;
         inset: 8px;
 
-        border: 1px solid
-            rgba(255, 250, 242, .55);
+        border: 1px solid rgba(248, 239, 227, 0.55);
 
         pointer-events: none;
 
@@ -4790,12 +4843,10 @@ footer a {
         font-size: 19px;
 
         background:
-            linear-gradient(
-                90deg,
-                rgba(45, 25, 14, .78),
-                rgba(45, 25, 14, .35),
-                transparent
-            );
+            linear-gradient(90deg,
+                rgba(63, 41, 32, 0.85),
+                rgba(63, 41, 32, 0.40),
+                transparent);
 
         backdrop-filter: blur(3px);
 
@@ -4872,10 +4923,10 @@ footer a {
         border-radius: 12px;
 
         box-shadow:
-            0 30px 80px rgba(74, 43, 22, .18);
+            0 30px 80px rgba(63, 41, 32, 0.12);
     }
 
-    .invitation-frame > img {
+    .invitation-frame>img {
         max-height: 760px;
 
         object-fit: contain;
@@ -4924,13 +4975,13 @@ footer a {
         padding: 42px;
 
         background:
-            rgba(255, 250, 242, .88);
+            rgba(248, 239, 227, 0.92);
 
         border:
-            1px solid rgba(199, 138, 43, .3);
+            1px solid rgba(184, 134, 59, 0.32);
 
         box-shadow:
-            0 24px 65px rgba(79, 49, 29, .12);
+            0 24px 65px rgba(63, 41, 32, 0.08);
 
         border-radius: 16px;
     }
@@ -4947,6 +4998,8 @@ footer a {
         font-weight: 500;
 
         margin: 18px 0;
+
+        color: var(--deep-rose);
     }
 
     .venue-location {
@@ -4969,11 +5022,11 @@ footer a {
         overflow: hidden;
 
         border:
-            1px solid rgba(199, 138, 43, .3);
+            1px solid rgba(184, 134, 59, 0.30);
 
         border-radius: 10px;
 
-        background: #eee;
+        background: var(--cream);
     }
 
     .map-preview iframe {
@@ -5000,9 +5053,13 @@ footer a {
         padding: 14px 22px;
 
         border:
-            1px solid var(--gold);
+            1px solid var(--antique-gold);
 
-        color: var(--brown);
+        border-radius: 999px;
+
+        background: rgba(248, 239, 227, 0.95);
+
+        color: var(--dark-brown);
 
         font-size: 11px;
 
@@ -5012,9 +5069,11 @@ footer a {
     }
 
     .direction-button:hover {
-        background: var(--gold);
+        background: var(--deep-rose);
 
-        color: white;
+        border-color: var(--deep-rose);
+
+        color: var(--ivory);
 
         transform: translateY(-2px);
     }
@@ -5073,8 +5132,7 @@ footer a {
         width: 1200px;
 
         grid-template-rows:
-            310px
-            310px;
+            310px 310px;
     }
 
     .couple-grid {
@@ -5086,7 +5144,9 @@ footer a {
         width: 1200px;
     }
 
-}/* =========================================================
+}
+
+/* =========================================================
    FINAL OUR MOMENTS GALLERY FIX — DESKTOP
 ========================================================= */
 
@@ -5099,13 +5159,10 @@ footer a {
         display: grid !important;
 
         grid-template-columns:
-            1.35fr
-            1fr
-            1fr !important;
+            1.35fr 1fr 1fr !important;
 
         grid-template-rows:
-            280px
-            280px !important;
+            280px 280px !important;
 
         gap: 22px !important;
 

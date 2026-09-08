@@ -4,36 +4,22 @@
 <head>
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="theme-color"
-        content="#f7f0e4"
-    >
+    <meta name="theme-color" content="#FAF0EC">
 
     <title>Abisha & Rohit — Our Wedding</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link
-        rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossorigin
-    >
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link
         href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&family=Great+Vibes&display=swap"
-        rel="stylesheet"
-    >
+        rel="stylesheet">
 
     <!-- Main CSS -->
-    <link
-        rel="stylesheet"
-        href="css/style.css"
-    >
+    <link rel="stylesheet" href="css/style.css">
 
     <!-- =====================================================
          OPENING VIDEO BASIC CSS
@@ -41,7 +27,6 @@
     ====================================================== -->
 
     <style>
-
         /* Opening video layer */
         .intro-screen {
             position: fixed;
@@ -52,7 +37,7 @@
             align-items: center;
             justify-content: center;
 
-            background: #f7f0e4;
+            background: linear-gradient(135deg, #FAF0EC 0%, #F5DAD5 50%, #FAF0ED 100%);
 
             overflow: hidden;
         }
@@ -95,11 +80,9 @@
             pointer-events: none;
 
             background:
-                linear-gradient(
-                    to bottom,
-                    rgba(40, 25, 15, 0.03),
-                    rgba(40, 25, 15, 0.10)
-                );
+                linear-gradient(to bottom,
+                    rgba(63, 41, 32, 0.03),
+                    rgba(63, 41, 32, 0.08));
         }
 
 
@@ -121,12 +104,12 @@
 
             padding: 15px 25px;
 
-            border: 1px solid rgba(150, 95, 30, 0.65);
+            border: 1px solid rgba(184, 134, 59, 0.75);
             border-radius: 999px;
 
-            background: rgba(255, 250, 242, 0.94);
+            background: rgba(248, 239, 227, 0.96);
 
-            color: #5b3827;
+            color: #3F2920;
 
             font-family: "DM Sans", sans-serif;
             font-size: 12px;
@@ -139,6 +122,8 @@
             transition:
                 transform 0.3s ease,
                 background 0.3s ease,
+                border-color 0.3s ease,
+                color 0.3s ease,
                 box-shadow 0.3s ease;
         }
 
@@ -146,10 +131,12 @@
         .enter-wedding:hover {
             transform: translateX(-50%) translateY(-3px);
 
-            background: #fffaf2;
+            background: #8F123B;
+            border-color: #8F123B;
+            color: #F8EFE3;
 
             box-shadow:
-                0 12px 35px rgba(80, 50, 25, 0.16);
+                0 12px 35px rgba(143, 18, 59, 0.25);
         }
 
 
@@ -195,7 +182,6 @@
                 font-size: 10px;
             }
         }
-
     </style>
 </head>
 
@@ -209,24 +195,12 @@
          ONLY ONE introVideo ID.
     ====================================================== -->
 
-    <div
-        id="introScreen"
-        class="intro-screen"
-    >
+    <div id="introScreen" class="intro-screen">
 
-        <video
-            id="introVideo"
-            class="intro-video"
-            playsinline
-            webkit-playsinline
-            preload="auto"
-            aria-label="Abisha and Rohit wedding introduction"
-        >
+        <video id="introVideo" class="intro-video" playsinline webkit-playsinline preload="auto"
+            aria-label="Abisha and Rohit wedding introduction">
 
-            <source
-                src="assets/openvideo.mp4"
-                type="video/mp4"
-            >
+            <source src="assets/openvideo.mp4" type="video/mp4">
 
             Your browser does not support HTML5 video.
 
@@ -234,25 +208,15 @@
 
 
         <!-- Soft overlay -->
-        <div
-            class="intro-overlay"
-            aria-hidden="true"
-        ></div>
+        <div class="intro-overlay" aria-hidden="true"></div>
 
 
         <!-- User gesture required for audio playback -->
-        <button
-            id="enterWedding"
-            class="enter-wedding"
-            type="button"
-        >
+        <button id="enterWedding" class="enter-wedding" type="button">
 
             <span>OPEN INVITATION</span>
 
-            <span
-                class="enter-arrow"
-                aria-hidden="true"
-            >
+            <span class="enter-arrow" aria-hidden="true">
                 →
             </span>
 
@@ -266,41 +230,25 @@
          HEADER
     ====================================================== -->
 
-    <header
-        class="site-header"
-        id="top"
-    >
+    <header class="site-header" id="top">
 
-        <a
-            class="brand"
-            href="#home"
-            aria-label="Abisha and Rohit home"
-        >
+        <a class="brand" href="#home" aria-label="Abisha and Rohit home">
 
             <span class="brand-logo-wrap">
 
-                <img
-                    src="assets/hero-wedding.png"
-                    alt="Abisha and Rohit wedding rings logo"
-                    class="brand-logo"
-                >
+                <img src="assets/hero-wedding1.png" alt="Abisha and Rohit wedding rings logo" class="brand-logo">
 
             </span>
 
             <span class="brand-name">
-                ABISHA &amp; ROHIT
+                ROHIT &amp; ABISHA
             </span>
 
         </a>
 
 
         <!-- Mobile navigation -->
-        <button
-            class="nav-toggle"
-            type="button"
-            aria-label="Open menu"
-            aria-expanded="false"
-        >
+        <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
 
             <span></span>
             <span></span>
@@ -310,10 +258,7 @@
 
 
         <!-- Navigation -->
-        <nav
-            class="nav"
-            aria-label="Main navigation"
-        >
+        <nav class="nav" aria-label="Main navigation">
 
             <a href="#couple">
                 THE COUPLE
@@ -356,16 +301,9 @@
              HERO
         ================================================== -->
 
-        <section
-            class="hero section"
-            id="home"
-        >
+        <section class="hero section" id="home">
 
-            <img
-                class="hero-logo"
-                src="assets/hero-wedding.png"
-                alt="Abisha and Rohit wedding rings logo"
-            >
+            <img class="hero-logo" src="assets/hero-wedding1.png" alt="Abisha and Rohit wedding rings logo">
 
 
             <div class="ornament">
@@ -395,10 +333,7 @@
             </p>
 
 
-            <a
-                class="gold-button"
-                href="#invitation"
-            >
+            <a class="gold-button" href="#invitation">
                 EXPLORE OUR INVITATION
             </a>
 
@@ -410,10 +345,7 @@
              COUPLE
         ================================================== -->
 
-        <section
-            class="couple section"
-            id="couple"
-        >
+        <section class="couple section" id="couple">
 
             <div class="section-heading">
 
@@ -432,10 +364,7 @@
 
                 <div class="couple-photo-frame">
 
-                    <img
-                        src="assets/couple.png"
-                        alt="Abisha and Rohit"
-                    >
+                    <img src="assets/couple.png" alt="Abisha and Rohit">
 
                 </div>
 
@@ -448,9 +377,9 @@
 
 
                     <h3>
-                        ABISHA
-                        <span>&amp;</span>
                         ROHIT
+                        <span>&amp;</span>
+                        ABISHA
                     </h3>
 
 
@@ -484,10 +413,7 @@
              MOMENTS
         ================================================== -->
 
-        <section
-            class="section moments"
-            id="moments"
-        >
+        <section class="section moments" id="moments">
 
             <div class="section-heading">
 
@@ -529,11 +455,7 @@
 
                 <figure class="moment-photo moment-photo-large">
 
-                    <img
-                        src="assets/m2.jpeg"
-                        alt="Abisha and Rohit"
-                        loading="lazy"
-                    >
+                    <img src="assets/m2.jpeg" alt="Abisha and Rohit" loading="lazy">
 
                     <figcaption>
 
@@ -550,11 +472,7 @@
 
                 <figure class="moment-photo">
 
-                    <img
-                        src="assets/m1.jpeg"
-                        alt="Abisha and Rohit"
-                        loading="lazy"
-                    >
+                    <img src="assets/m1.jpeg" alt="Abisha and Rohit" loading="lazy">
 
                     <figcaption>
 
@@ -567,18 +485,14 @@
                 </figure>
 
 
-               
+
 
 
                 <!-- PHOTO 4 -->
 
                 <figure class="moment-photo">
 
-                    <img
-                        src="assets/m5.jpeg"
-                        alt="Abisha and Rohit"
-                        loading="lazy"
-                    >
+                    <img src="assets/m5.jpeg" alt="Abisha and Rohit" loading="lazy">
 
                     <figcaption>
 
@@ -591,7 +505,7 @@
                 </figure>
 
 
-               
+
 
             </div>
 
@@ -603,10 +517,7 @@
              COUNTDOWN
         ================================================== -->
 
-        <section
-            class="countdown section"
-            id="countdown"
-        >
+        <section class="countdown section" id="countdown">
 
             <div class="section-heading">
 
@@ -638,10 +549,7 @@
             </div>
 
 
-            <div
-                class="countdown-grid"
-                aria-live="polite"
-            >
+            <div class="countdown-grid" aria-live="polite">
 
                 <div class="time-card">
 
@@ -704,10 +612,7 @@
              CELEBRATIONS
         ================================================== -->
 
-        <section
-            class="section celebrations"
-            id="celebrations"
-        >
+        <section class="section celebrations" id="celebrations">
 
             <div class="section-heading">
 
@@ -765,7 +670,7 @@
                     <div class="event-date">
 
                         <span class="day">
-                            04
+                            12
                         </span>
 
                         <div>
@@ -775,7 +680,7 @@
                             </span>
 
                             <span class="weekday">
-                                SUNDAY
+                                MONDAY
                             </span>
 
                         </div>
@@ -786,7 +691,7 @@
                     <div class="event-time">
 
                         <span>
-                            04:00 PM
+                            06:00 PM
                         </span>
 
                         <small>
@@ -804,11 +709,11 @@
                     <div class="event-location">
 
                         <h3>
-                            Sacred Heart Community Hall
+                            A N R Thirumana Maligai
                         </h3>
 
                         <p>
-                            Gnaranvilai, Pacode
+                            Tondiarpet, Chennai
                         </p>
 
                     </div>
@@ -816,12 +721,8 @@
 
                     <div class="event-actions">
 
-                        <a
-                            href="https://www.google.com/maps/search/?api=1&query=Sacred+Heart+Community+Hall+Gnaravila+Pacode"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="direction-btn"
-                        >
+                        <a href="https://www.google.com/maps/dir//A+N+R+Thirumana+Maligai,+147%2F2,+Thiruvottiyur+High+Rd,+New+Washermenpet,+Tondiarpet,+Chennai,+Tamil+Nadu+600081/@13.3628227,80.1533139,15z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3a526f9d9827db8b:0xbcbdc85cfa5f7351!2m2!1d80.2917876!2d13.1307571?entry=ttu&g_ep=EgoyMDI2MDkwMi4wIKXMDSoASAFQAw%3D%3D"
+                            target="_blank" rel="noopener noreferrer" class="direction-btn">
 
                             <span>↗</span>
 
@@ -911,12 +812,8 @@
 
                     <div class="event-actions">
 
-                        <a
-                            href="https://maps.app.goo.gl/8qnDfKK2VgHmLzZn6"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="direction-btn"
-                        >
+                        <a href="https://maps.app.goo.gl/8qnDfKK2VgHmLzZn6" target="_blank" rel="noopener noreferrer"
+                            class="direction-btn">
 
                             <span>↗</span>
 
@@ -938,7 +835,7 @@
                 </span>
 
                 <strong>
-                    Abisha & Rohit
+                    Rohit & Abisha
                 </strong>
 
             </div>
@@ -951,10 +848,7 @@
              INVITATION
         ================================================== -->
 
-        <section
-            class="invitation section"
-            id="invitation"
-        >
+        <section class="invitation section" id="invitation">
 
             <div class="section-heading">
 
@@ -985,18 +879,12 @@
 
                 <div class="invitation-frame">
 
-                    <img
-                        src="assets/front.jpg"
-                        alt="Wedding invitation card"
-                    >
+                    <img src="assets/front1.png" alt="Wedding invitation card">
 
                 </div>
 
 
-                <button
-                    class="open-invitation"
-                    type="button"
-                >
+                <button class="open-invitation" type="button">
 
                     <span>
                         ▣
@@ -1016,34 +904,19 @@
              INVITATION MODAL
         ================================================== -->
 
-        <div
-            class="invitation-modal"
-            aria-hidden="true"
-        >
+        <div class="invitation-modal" aria-hidden="true">
 
             <div class="modal-backdrop"></div>
 
 
-            <div
-                class="modal-panel"
-                role="dialog"
-                aria-modal="true"
-                aria-label="Wedding invitation"
-            >
+            <div class="modal-panel" role="dialog" aria-modal="true" aria-label="Wedding invitation">
 
-                <button
-                    class="modal-close"
-                    type="button"
-                    aria-label="Close invitation"
-                >
+                <button class="modal-close" type="button" aria-label="Close invitation">
                     ×
                 </button>
 
 
-                <img
-                    src="assets/invite.png"
-                    alt="Full wedding invitation"
-                >
+                <img src="assets/invite2.png" alt="Full wedding invitation">
 
             </div>
 
@@ -1055,10 +928,7 @@
              FIND MY WAY
         ================================================== -->
 
-        <section
-            class="find-way section"
-            id="find-way"
-        >
+        <section class="find-way section" id="find-way">
 
             <div class="section-heading">
 
@@ -1096,141 +966,131 @@
      VENUE GRID
 ================================================== -->
 
-<div class="venue-grid">
+            <div class="venue-grid">
 
-    <!-- =============================================
+                <!-- =============================================
          RECEPTION VENUE
     ============================================== -->
 
-    <article class="venue-card">
+                <article class="venue-card">
 
-        <div class="venue-top">
+                    <div class="venue-top">
 
-            <div class="venue-icon">
-                ♢
-            </div>
+                        <div class="venue-icon">
+                            ♢
+                        </div>
 
-            <p class="venue-label">
-                THE RECEPTION
-            </p>
+                        <p class="venue-label">
+                            THE RECEPTION
+                        </p>
 
-        </div>
-
-
-        <div class="venue-content">
-
-            <h3>
-                Sacred Heart
-                <br>
-                Community Hall
-            </h3>
-
-            <p class="venue-location">
-                Gnaranvilai, Pacode
-            </p>
-
-            <div class="venue-divider">
-                ✦
-            </div>
+                    </div>
 
 
-            <!-- MAP PREVIEW -->
+                    <div class="venue-content">
 
-            <div class="map-preview">
+                        <h3>
+                            A N R
+                            <br>
+                            Thirumana Maligai
+                        </h3>
 
-                <iframe
-                    src="https://www.openstreetmap.org/export/embed.html?bbox=77.215%2C8.315%2C77.245%2C8.350&layer=mapnik&marker=8.3325%2C77.2311"
-                    title="Map showing Sacred Heart Community Hall, Pacode"
-                    loading="lazy">
-                </iframe>
+                        <p class="venue-location">
+                            Tondiarpet, Chennai
+                        </p>
 
-            </div>
+                        <div class="venue-divider">
+                            ✦
+                        </div>
 
 
-            <!-- GOOGLE MAPS -->
+                        <!-- MAP PREVIEW -->
 
-            <a
-                href="https://www.google.com/maps/search/?api=1&query=Sacred+Heart+Community+Hall+Gnaravila+Pacode"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="direction-button"
-            >
-                <span>↗</span>
-                OPEN IN MAPS
-            </a>
+                        <div class="map-preview">
 
-        </div>
+                            <iframe
+                                src="https://www.openstreetmap.org/export/embed.html?bbox=80.288%2C13.128%2C80.296%2C13.134&layer=mapnik&marker=13.1307571%2C80.2917876"
+                                title="Map showing Sacred Heart Community Hall, Pacode" loading="lazy">
+                            </iframe>
 
-    </article>
+                        </div>
+
+
+                        <!-- GOOGLE MAPS -->
+
+                        <a href="https://www.google.com/maps/dir//A+N+R+Thirumana+Maligai,+147%2F2,+Thiruvottiyur+High+Rd,+New+Washermenpet,+Tondiarpet,+Chennai,+Tamil+Nadu+600081/@13.3628227,80.1533139,15z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3a526f9d9827db8b:0xbcbdc85cfa5f7351!2m2!1d80.2917876!2d13.1307571?entry=ttu&g_ep=EgoyMDI2MDkwMi4wIKXMDSoASAFQAw%3D%3D"
+                            target="_blank" rel="noopener noreferrer" class="direction-button">
+                            <span>↗</span>
+                            OPEN IN MAPS
+                        </a>
+
+                    </div>
+
+                </article>
 
 
 
-    <!-- =============================================
+                <!-- =============================================
          WEDDING VENUE
     ============================================== -->
 
-    <article class="venue-card">
+                <article class="venue-card">
 
-        <div class="venue-top">
+                    <div class="venue-top">
 
-            <div class="venue-icon">
-                ♢
+                        <div class="venue-icon">
+                            ♢
+                        </div>
+
+                        <p class="venue-label">
+                            THE WEDDING CEREMONY
+                        </p>
+
+                    </div>
+
+
+                    <div class="venue-content">
+
+                        <h3>
+                            Christ The King
+                            <br>
+                            Cathedral Church
+                        </h3>
+
+                        <p class="venue-location">
+                            Marthandam
+                        </p>
+
+                        <div class="venue-divider">
+                            ✦
+                        </div>
+
+
+                        <!-- MAP PREVIEW -->
+
+                        <div class="map-preview">
+
+                            <iframe
+                                src="https://www.openstreetmap.org/export/embed.html?bbox=77.195%2C8.295%2C77.240%2C8.330&layer=mapnik&marker=8.3138%2C77.2146"
+                                title="Map showing Christ The King Cathedral Church, Marthandam" loading="lazy">
+                            </iframe>
+
+                        </div>
+
+
+                        <!-- GOOGLE MAPS -->
+
+                        <a href="https://maps.app.goo.gl/8qnDfKK2VgHmLzZn6" target="_blank" rel="noopener noreferrer"
+                            class="direction-button">
+                            <span>↗</span>
+                            OPEN IN MAPS
+                        </a>
+
+                    </div>
+
+                </article>
+
             </div>
-
-            <p class="venue-label">
-                THE WEDDING CEREMONY
-            </p>
-
-        </div>
-
-
-        <div class="venue-content">
-
-            <h3>
-                Christ The King
-                <br>
-                Cathedral Church
-            </h3>
-
-            <p class="venue-location">
-                Marthandam
-            </p>
-
-            <div class="venue-divider">
-                ✦
-            </div>
-
-
-            <!-- MAP PREVIEW -->
-
-            <div class="map-preview">
-
-                <iframe
-                    src="https://www.openstreetmap.org/export/embed.html?bbox=77.195%2C8.295%2C77.240%2C8.330&layer=mapnik&marker=8.3138%2C77.2146"
-                    title="Map showing Christ The King Cathedral Church, Marthandam"
-                    loading="lazy">
-                </iframe>
-
-            </div>
-
-
-            <!-- GOOGLE MAPS -->
-
-            <a
-                href="https://maps.app.goo.gl/8qnDfKK2VgHmLzZn6"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="direction-button"
-            >
-                <span>↗</span>
-                OPEN IN MAPS
-            </a>
-
-        </div>
-
-    </article>
-
-</div>
 
         </section>
 
@@ -1244,16 +1104,9 @@
          ONLY ONE AUDIO ELEMENT.
     ====================================================== -->
 
-    <audio
-        id="weddingMusic"
-        preload="none"
-        loop
-    >
+    <audio id="weddingMusic" preload="none" loop>
 
-        <source
-            src="assets/jessy.mp3"
-            type="audio/mpeg"
-        >
+        <source src="assets/jessy.mp3" type="audio/mpeg">
 
         Your browser does not support audio playback.
 
@@ -1265,12 +1118,7 @@
          MUSIC BUTTON
     ====================================================== -->
 
-    <button
-        class="music-button"
-        id="musicButton"
-        type="button"
-        aria-label="Play wedding music"
-    >
+    <button class="music-button" id="musicButton" type="button" aria-label="Play wedding music">
 
         <span class="music-icon">
             ♫
@@ -1291,7 +1139,7 @@
     <footer>
 
         <p>
-            WITH LOVE, ABISHA &amp; ROHIT
+            WITH LOVE, ROHIT &amp; ABISHA
         </p>
 
 
