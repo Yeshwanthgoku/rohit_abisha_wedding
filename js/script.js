@@ -177,20 +177,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "true"
         );
 
-        /*
-         * Don't unlock scrolling if
-         * the opening video is still active.
-         */
-
-        const introScreen =
-            document.getElementById("introScreen");
-
-        if (
-            !introScreen ||
-            introScreen.classList.contains("is-finished")
-        ) {
-            document.body.style.overflow = "";
-        }
+        document.body.style.overflow = "";
 
     }
 
@@ -388,8 +375,7 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
 
             /*
-             * Always start from the beginning
-             * after the opening video.
+             * Start background music playback.
              */
 
             music.currentTime = 0;
@@ -501,330 +487,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       OPENING VIDEO
+       AUDIO AUTOPLAY ON FIRST INTERACTION
     ===================================================== */
 
-    const introScreen =
-        document.getElementById("introScreen");
+    function enableAudioOnInteraction() {
 
-    const introVideo =
-        document.getElementById("introVideo");
+        if (music && music.paused) {
 
-    const enterWedding =
-        document.getElementById("enterWedding");
+            music.volume = 0.8;
 
-
-    /*
-     * Prevent website scrolling while
-     * opening video is visible.
-     */
-
-    if (introScreen) {
-
-        document.body.style.overflow = "hidden";
-
-    }
-
-
-
-    /*
-     * Prevent accidentally starting
-     * the opening video multiple times.
-     */
-
-    let introStarted = false;
-
-    let introFinished = false;
-
-
-
-    /* =====================================================
-       START INTRO VIDEO
-    ===================================================== */
-
-    async function startIntroVideo() {
-
-        if (
-            !introVideo ||
-            !introScreen ||
-            introStarted ||
-            introFinished
-        ) {
-            return;
-        }
-
-
-        introStarted = true;
-
-
-        introScreen.classList.add(
-            "is-playing"
-        );
-
-
-        /*
-         * Opening video must play
-         * muted (no video sound).
-         */
-
-        introVideo.muted = true;
-
-        introVideo.volume = 0;
-
-
-        try {
-
-            /* =================================================
-               START VIDEO + MUSIC AT THE SAME TIME
-               (fired together, not one after the other,
-               so there is no delay before the music starts)
-            ================================================= */
-
-            const introVideoPlayPromise =
-                introVideo.play();
-
-            startBackgroundMusic();
-
-            await introVideoPlayPromise;
-
-
-            /*
-             * Hide the OPEN INVITATION button
-             * once the video starts.
-             */
-
-            if (enterWedding) {
-
-                enterWedding.classList.add(
-                    "playing"
-                );
-
-            }
-
-
-            console.log(
-                "Opening video started."
-            );
-
-        }
-
-        catch (error) {
-
-            console.error(
-                "Opening video could not start:",
-                error
-            );
-
-
-            /*
-             * Reset so the user can
-             * try again.
-             */
-
-            introStarted = false;
-
-
-            if (introScreen) {
-
-                introScreen.classList.remove(
-                    "is-playing"
-                );
-
-            }
+            music.play()
+                .then(() => {
+                    updateMusicButton();
+                })
+                .catch(() => {
+                    /* Autoplay was restricted by browser policy; music button is available */
+                });
 
         }
 
     }
 
-
-
-    /* =====================================================
-       OPEN INVITATION BUTTON
-    ===================================================== */
-
-    if (enterWedding) {
-
-        enterWedding.addEventListener(
-            "click",
-            (event) => {
-
-                event.preventDefault();
-
-                event.stopPropagation();
-
-                startIntroVideo();
-
-            }
-        );
-
-    }
-
-
-
-    /* =====================================================
-       CLICK ANYWHERE ON INTRO
-    ===================================================== */
-
-    if (introScreen) {
-
-        introScreen.addEventListener(
-            "click",
-            (event) => {
-
-                /*
-                 * If the button was clicked,
-                 * its own handler handles it.
-                 */
-
-                if (
-                    event.target.closest(
-                        "#enterWedding"
-                    )
-                ) {
-                    return;
-                }
-
-
-                /*
-                 * Clicking anywhere else
-                 * starts the video.
-                 */
-
-                if (
-                    introVideo &&
-                    introVideo.paused
-                ) {
-
-                    startIntroVideo();
-
-                }
-
-            }
-        );
-
-    }
-
-
-
-    /* =====================================================
-       OPENING VIDEO FINISHED
-    ===================================================== */
-
-    if (introVideo) {
-
-        introVideo.addEventListener(
-            "ended",
-            async () => {
-
-                if (introFinished) {
-                    return;
-                }
-
-
-                introFinished = true;
-
-
-                console.log(
-                    "Opening video finished."
-                );
-
-
-                /*
-                 * Mark intro as finished.
-                 */
-
-                if (introScreen) {
-
-                    introScreen.classList.add(
-                        "is-finished"
-                    );
-
-                    introScreen.classList.remove(
-                        "is-playing"
-                    );
-
-                }
-
-
-                /*
-                 * Restore website scrolling.
-                 */
-
-                document.body.style.overflow = "";
-
-
-                /*
-                 * Background music was already started
-                 * on the OPEN INVITATION click, so it
-                 * simply keeps playing here.
-                 */
-
-
-                /*
-                 * Remove opening screen
-                 * after fade animation.
-                 */
-
-                setTimeout(() => {
-
-                    if (introScreen) {
-
-                        introScreen.style.display =
-                            "none";
-
-                    }
-
-                }, 1300);
-
-            }
-        );
-
-
-
-        /* =================================================
-           VIDEO ERROR
-        ================================================= */
-
-        introVideo.addEventListener(
-            "error",
-            () => {
-
-                console.error(
-                    "Could not load assets/openvideo.mp4"
-                );
-
-                /*
-                 * Show useful fallback message
-                 * in the console.
-                 */
-
-                console.error(
-                    "Check that openvideo.mp4 exists inside the assets folder."
-                );
-
-            }
-        );
-
-
-        /*
-         * Helpful loading diagnostics.
-         */
-
-        introVideo.addEventListener(
-            "loadedmetadata",
-            () => {
-
-                console.log(
-                    "Opening video loaded:",
-                    introVideo.videoWidth,
-                    "x",
-                    introVideo.videoHeight
-                );
-
-            }
-        );
-
-    }
+    window.addEventListener("click", enableAudioOnInteraction, { once: true });
+    window.addEventListener("touchstart", enableAudioOnInteraction, { once: true });
+    window.addEventListener("keydown", enableAudioOnInteraction, { once: true });
 
 
 
